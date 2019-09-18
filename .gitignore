@@ -1,1 +1,7 @@
+#metadata file
 /.metadata
+#idea file
+.idea/
+*.iml
+target/
+/client/mobile/GeoIndoorPos/.idea/
