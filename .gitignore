@@ -4,4 +4,4 @@
 .idea/
 *.iml
 target/
-/client/mobile/GeoIndoorPos/.idea/
+client/mobile/GeoIndoorPos/.idea
