@@ -33,6 +33,7 @@
 		<module>model</module>
 		<module>utils</module>
 		<module>database</module>
+		<module>service</module>
 	</modules>
 
 	<!-- 自定义变量 -->
