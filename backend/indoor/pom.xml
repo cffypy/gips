@@ -173,7 +173,16 @@
 
 	<!-- 可能用到的项目依赖 -->
 	<dependencyManagement>
+
 		<dependencies>
+
+			<!-- 本模块 -->
+			<dependency>
+				<groupId>top.geomatics.ips</groupId>
+				<artifactId>commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 			<!-- JUnit -->
 			<dependency>
 				<groupId>junit</groupId>
