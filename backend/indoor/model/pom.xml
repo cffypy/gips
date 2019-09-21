@@ -18,6 +18,11 @@
 			<groupId>top.geomatics.ips</groupId>
 			<artifactId>ips-commons</artifactId>
 		</dependency>
+		<!-- json -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
 	</dependencies>
 
 

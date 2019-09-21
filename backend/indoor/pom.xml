@@ -183,6 +183,11 @@
 				<artifactId>ips-commons</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>top.geomatics.ips</groupId>
+				<artifactId>ips-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
 			<!-- JUnit -->
 			<dependency>
