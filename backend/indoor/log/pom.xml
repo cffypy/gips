@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <artifactId>indoor</artifactId>
+        <artifactId>ips-indoor</artifactId>
         <groupId>top.geomatics.ips</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
  
-    <artifactId>log</artifactId>
+    <artifactId>ips-log</artifactId>
     <packaging>jar</packaging>
 
 

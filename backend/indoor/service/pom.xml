@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>top.geomatics.ips</groupId>
-    <artifactId>indoor</artifactId>
+    <artifactId>ips-indoor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>service</artifactId>
+  <artifactId>ips-service</artifactId>
   <name>service</name>
 
 
