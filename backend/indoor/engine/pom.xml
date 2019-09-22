@@ -7,6 +7,8 @@
 		<artifactId>ips-indoor</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
+	<groupId>top.geomatics.ips.engine</groupId>
 	<artifactId>ips-engine</artifactId>
 	<packaging>pom</packaging>
 	<name>ips engine</name>
