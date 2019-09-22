@@ -5,10 +5,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>top.geomatics.ips</groupId>
+		<groupId>top.geomatics.ips.engine</groupId>
 		<artifactId>ips-engine</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
 	<artifactId>ips-engine-pdr</artifactId>
 	<name>pdr</name>
 
