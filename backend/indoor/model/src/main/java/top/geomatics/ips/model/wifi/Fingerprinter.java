@@ -11,7 +11,7 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @author whudyj
  *
  */
-public class WifiSample {
+public class Fingerprinter {
 	// [{
 	// "Point NO": 1,
 	// "PosLon": 114.35489935727901,
@@ -37,7 +37,7 @@ public class WifiSample {
 	@JSONField(name = "NumOfStrongerthan70")
 	Integer above70;
 	@JSONField(name = "FP info")
-	List<FingerPrinterInfo> fpInfos;
+	String fpInfos;
 
 	public String getPointNumber() {
 		return pointNumber;
@@ -79,11 +79,11 @@ public class WifiSample {
 		this.above70 = above70;
 	}
 
-	public List<FingerPrinterInfo> getFpInfos() {
+	public String getFpInfos() {
 		return fpInfos;
 	}
 
-	public void setFpInfos(List<FingerPrinterInfo> fpInfos) {
+	public void setFpInfos(String fpInfos) {
 		this.fpInfos = fpInfos;
 	}
 
