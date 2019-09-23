@@ -1,4 +1,4 @@
-package com.example.peiyuyu.pdr;
+package com.example.peiyuyu.wifi_location;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.peiyuyu.pdr", appContext.getPackageName());
+        assertEquals("com.example.peiyuyu.wifi_location", appContext.getPackageName());
     }
 }

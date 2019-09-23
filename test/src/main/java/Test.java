@@ -20,7 +20,6 @@ public class Test {
         node2.next = node3;
         node3.next = node4;
         System.out.println(revertNode(node1));
-
     }
 
     static void takeNum(LinkedList<Integer> list,int internal){
@@ -60,18 +59,34 @@ public class Test {
     }
 
     static Node revertNode(Node list){
-
-        Node pnew = new Node();
-        Node p = pnew;
-        while(list.next!=null){
-            Node l = list.next;
-            list.next = null;
-            pnew.next = list;
-            pnew = pnew.next;
-            list = l;
+        Node pnew=null;
+        while(list!=null){
+            Node pold = list;
+            list = list.next;
+            pold.next = pnew;
+            pnew = pold;
         }
-        return p.next;
-
+        return pnew;
 
     }
+
+    private static Node  deleteRep(Node list) {
+        Node head = list;
+       while(head!=null){
+           Node cur = head;
+           Node pre = cur;
+           while(cur!=null){
+               if(cur.value==head.value){
+                   pre.next = cur.next;
+               }else{
+                   pre = cur;
+               }
+               cur = cur.next;
+           }
+           head = head.next;
+       }
+        return list;
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.peiyuyu.pdr;
+package com.example.peiyuyu.wifi_location;
 
 import org.junit.Test;
 
