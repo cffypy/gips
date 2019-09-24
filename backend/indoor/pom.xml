@@ -93,6 +93,8 @@
 		<commons_compress.version>1.18</commons_compress.version>
 		<!-- deeplearning4j版本 -->
 		<deeplearning4j.version>0.9.1</deeplearning4j.version>
+		<!-- servlet-api版本 -->
+		<servlet-api.version>4.0.1</servlet-api.version>
 
 	</properties>
 
@@ -236,6 +238,13 @@
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-configuration2</artifactId>
 				<version>${configuration2.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet-api}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<!-- 数据库 -->
