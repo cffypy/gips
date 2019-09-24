@@ -1,7 +1,10 @@
 /**
  * 
  */
+
 package top.geomatics.ips.model.vision;
+
+import org.opencv.core.Mat;
 
 /**
  * @author whudyj
@@ -15,16 +18,19 @@ public class FeaturePoint2D {
 	//特征点在Y轴上的数值。单位：像素。
 	private Double y;
 	
+	private Mat descriptor;
+	
 	
 	public FeaturePoint2D() {
 		super();
 	}
 
 
-	public FeaturePoint2D(Double x, Double y) {
+	public FeaturePoint2D(Double x, Double y, Mat descriptor) {
 		super();
 		this.x = x;
 		this.y = y;
+		this.descriptor = descriptor;
 	}
 
 
@@ -45,6 +51,15 @@ public class FeaturePoint2D {
 
 	public void setY(Double y) {
 		this.y = y;
+	}
+	
+	public Mat getDescriptor() {
+		return descriptor;
+	}
+
+
+	public void setDescriptor(Mat descriptor) {
+		this.descriptor = descriptor;
 	}
 
 	
