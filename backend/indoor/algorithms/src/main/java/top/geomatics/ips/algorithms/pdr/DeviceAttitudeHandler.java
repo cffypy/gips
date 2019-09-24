@@ -1,4 +1,4 @@
-package pdr;
+package top.geomatics.ips.algorithms.pdr;
 
 import android.app.Activity;
 import android.hardware.Sensor;

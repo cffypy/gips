@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Test {
     public static void main(String[] args) {
@@ -8,6 +9,7 @@ public class Test {
 //        list.add(2);
 //        list.add(3);
 //        takeNum(list,3);
+        Stack<Integer>
         Node node1 = new Node();
         Node node2 = new Node();
         Node node3 = new Node();

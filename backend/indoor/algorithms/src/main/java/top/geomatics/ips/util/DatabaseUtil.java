@@ -1,4 +1,4 @@
-package java.top.geomatics.ips.util;
+package top.geomatics.ips.util;
 
 public class DatabaseUtil {
 }

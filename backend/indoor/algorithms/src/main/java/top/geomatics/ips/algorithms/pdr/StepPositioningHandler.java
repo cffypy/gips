@@ -1,4 +1,4 @@
-package pdr;
+package top.geomatics.ips.algorithms.pdr;
 
 import android.location.Location;
 
@@ -15,7 +15,7 @@ public class StepPositioningHandler {
 		this.mCurrentLocation = mCurrentLocation;
 	}
 	
-	/** Calcule la nouvelle position de l'utilisateur à partir de la courante
+	/** Calcule la nouvelle position de l'utilisateur ï¿½ partir de la courante
 	 * @param stepSize la taille du pas qu'a fait l'utilisateur
 	 * @param bearing l'angle de direction
 	 * @return la nouvelle localisation

@@ -1,4 +1,4 @@
-package pdr;
+package top.geomatics.ips.algorithms.pdr;
 
 import android.app.Activity;
 import android.hardware.Sensor;
@@ -43,7 +43,7 @@ public class StepDetectionHandler extends Activity implements
 
 		if (e.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
 			y = e.values[1];
-			// seuil à partir duquel on considère qu'il s'agit bien d'un pas
+			// seuil ï¿½ partir duquel on considï¿½re qu'il s'agit bien d'un pas
 			if (y > 1 && mStepDetectionListener != null) {
 				onNewStepDetected();
 

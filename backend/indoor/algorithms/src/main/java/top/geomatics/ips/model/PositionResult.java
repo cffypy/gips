@@ -1,4 +1,4 @@
-package java.top.geomatics.ips.model;
+package top.geomatics.ips.model;
 
 /**
  * @author chenfa

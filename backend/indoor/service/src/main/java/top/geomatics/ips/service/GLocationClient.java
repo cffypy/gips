@@ -4,7 +4,7 @@ package top.geomatics.ips.service;
  * Created by whudyj on 2017/11/2.
  */
 
-public class GLocationClient {
+public class GLocationClient  {
 	/**
 	 * 获取最后位置
 	 */

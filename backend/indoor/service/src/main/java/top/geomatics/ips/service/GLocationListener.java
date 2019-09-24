@@ -5,6 +5,7 @@ package top.geomatics.ips.service;
  */
 
 public class GLocationListener implements IGLocationListener {
+
     @Override
     public void onLocationChanged(GLocation location) {
 

@@ -1,4 +1,4 @@
-package java.top.geomatics.ips;
+package top.geomatics.ips;
 
 import java.top.geomatics.ips.model.PositionResult;
 import java.top.geomatics.ips.model.ScanResults;
