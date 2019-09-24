@@ -21,9 +21,17 @@
 			<groupId>org.deeplearning4j</groupId>
 			<artifactId>deeplearning4j-core</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-core</artifactId>
+		</dependency>
+
+
+		<!-- 本模块 -->
+		<dependency>
+			<groupId>top.geomatics.ips</groupId>
+			<artifactId>ips-model</artifactId>
 		</dependency>
 
 	</dependencies>
