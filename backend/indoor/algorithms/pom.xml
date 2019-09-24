@@ -21,26 +21,14 @@
 			<groupId>org.deeplearning4j</groupId>
 			<artifactId>deeplearning4j-core</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-core</artifactId>
-		</dependency>
-
-
 		<!-- 本模块 -->
 		<dependency>
 			<groupId>top.geomatics.ips</groupId>
 			<artifactId>ips-model</artifactId>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.60</version>
+			<groupId>top.geomatics.ips</groupId>
+			<artifactId>ips-database</artifactId>
 		</dependency>
-
-
 	</dependencies>
 </project>
