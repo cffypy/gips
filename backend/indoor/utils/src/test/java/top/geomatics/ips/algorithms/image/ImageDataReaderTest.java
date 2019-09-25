@@ -14,7 +14,7 @@ public class ImageDataReaderTest {
 	public void testLoadOBJ() {
 		String pathString = "D:\\ips\\data\\database\\诗琳通视觉定位数据";
 		String rf = pathString + File.separator + "extractorType-OBJ-212.dat";
-		String wf = pathString + File.separator + "extractorType-OBJ-212.json";
+		String wf = pathString + File.separator + "extractorType-OBJ-212.txt";
 		ir.loadOBJ(rf,wf);
 	}
 
