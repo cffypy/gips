@@ -8,6 +8,5 @@ public class GLocationListener implements IGLocationListener {
 
     @Override
     public void onLocationChanged(GLocation location) {
-
     }
 }

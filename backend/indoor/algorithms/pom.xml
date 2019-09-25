@@ -30,14 +30,5 @@
 			<groupId>top.geomatics.ips</groupId>
 			<artifactId>ips-database</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>com.android.support</groupId>
-			<artifactId>appcompat-v7</artifactId>
-			<version>27.1.1</version>
-		</dependency>
-
-
-
 	</dependencies>
 </project>
