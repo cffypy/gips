@@ -36,7 +36,7 @@ public class FingerPrinterInfo {
 	@JSONField(name = "minRssi")
 	Integer minRssi;
 	@JSONField(name = "meanRssi")
-	Integer meanRssi;
+	Double meanRssi;
 	@JSONField(name = "stdRssi")
 	Double stdRssi;
 	@JSONField(name = "NumWeakerthanMax")
@@ -94,11 +94,11 @@ public class FingerPrinterInfo {
 		this.minRssi = minRssi;
 	}
 
-	public Integer getMeanRssi() {
+	public Double getMeanRssi() {
 		return meanRssi;
 	}
 
-	public void setMeanRssi(Integer meanRssi) {
+	public void setMeanRssi(Double meanRssi) {
 		this.meanRssi = meanRssi;
 	}
 
