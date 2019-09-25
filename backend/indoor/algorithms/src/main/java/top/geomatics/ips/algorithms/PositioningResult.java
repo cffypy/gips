@@ -16,8 +16,8 @@ import top.geomatics.ips.model.wlan.Position;
 public class PositioningResult {
 	Position position;
 
-	int x;
-	int y;
+	double x;
+	double y;
 
 	public PositioningResult() {
 		super();
@@ -31,7 +31,7 @@ public class PositioningResult {
 		this.y = pos.getY();
 	}
 
-	public PositioningResult(int x, int y) {
+	public PositioningResult(double x, double y) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -39,19 +39,19 @@ public class PositioningResult {
 		this.position = new Position(x, y);
 	}
 
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 

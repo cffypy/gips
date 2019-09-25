@@ -1,7 +1,7 @@
 package top.geomatics.ips;
 
-import java.top.geomatics.ips.model.PositionResult;
-import java.top.geomatics.ips.model.ScanResults;
+import top.geomatics.ips.model.PositionResult;
+import top.geomatics.ips.model.ScanResults;
 
 /**
  * @author chenfa
