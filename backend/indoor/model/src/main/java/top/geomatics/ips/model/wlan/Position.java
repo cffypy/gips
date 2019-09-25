@@ -17,27 +17,27 @@ public class Position {
 
 	protected IndoorMap map;
 
-	protected int x;
-	protected int y;
+	protected double x;
+	protected double y;
 
 	public Position() {
 		super();
 	}
 
-	public Position(int x, int y) {
+	public Position(double x, double y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
 
-	public Position(IndoorMap map, int x, int y) {
+	public Position(IndoorMap map, double x, double y) {
 		super();
 		this.map = map;
 		this.x = x;
 		this.y = y;
 	}
 
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
@@ -45,7 +45,7 @@ public class Position {
 		this.x = x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
