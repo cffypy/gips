@@ -30,5 +30,7 @@
 			<groupId>top.geomatics.ips</groupId>
 			<artifactId>ips-database</artifactId>
 		</dependency>
+
 	</dependencies>
+
 </project>
