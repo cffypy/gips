@@ -5,6 +5,10 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import top.geomatics.ips.model.cf.ScanInfo;
 
+/**
+ * @author chenfa
+ * 数据存储服务
+ */
 @Api(value = "/save", tags = "数据存储服务")
 @RestController
 @RequestMapping("/save")
