@@ -5,12 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import top.geomatics.ips.algorithms.PositioningResult;
+import top.geomatics.ips.algorithms.base.BayesPositioning;
 import top.geomatics.ips.algorithms.knn.NearestNeighborAlgorithm;
 import top.geomatics.ips.model.wlan.WLANMeasurement;
 
 /**
  * @author chenfa
- * 基于wifi的室内定位算法
+ * 基于wifi的室内定位
  */
 
 @RestController
@@ -19,9 +20,18 @@ public class PositionController {
     @Autowired
     public NearestNeighborAlgorithm knn;
 
+    @Autowired
+    public BayesPositioning bayes;
+
     @RequestMapping("/knn")
     public PositioningResult knn(@RequestParam WLANMeasurement measurements ){
         PositioningResult positioningResult=knn.calculatePosition(measurements);
+        return positioningResult;
+    }
+
+    @RequestMapping("/bayes")
+    public PositioningResult bayes(@RequestParam WLANMeasurement measurements ){
+        PositioningResult positioningResult=bayes.calculatePosition(measurements);
         return positioningResult;
     }
 
