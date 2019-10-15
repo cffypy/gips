@@ -27,6 +27,9 @@ import top.geomatics.ips.model.wlan.WLANMeasurement;
  */
 public class NearestNeighborAlgorithm implements PositioningAlgorithm {
 
+	public NearestNeighborAlgorithm() {
+	}
+
 	Context context;
 
 	/**

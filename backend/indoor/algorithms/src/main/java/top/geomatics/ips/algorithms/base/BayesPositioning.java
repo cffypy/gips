@@ -25,6 +25,8 @@ import top.geomatics.ips.model.wlan.WLANMeasurement;
  *
  */
 public class BayesPositioning implements PositioningAlgorithm {
+	public BayesPositioning() {
+	}
 
 	Context context;
 	List<BayesFingerprint> fps;
