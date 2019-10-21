@@ -2,14 +2,13 @@
 
   <div class='baseMapWrapper' ref="baseMapWrapper">
     <div id="baseMap" class="baseMap"></div>
-    <!--点击定位到当前-->
-   <!-- <div class="mapboxgl-ctrl mapboxgl-ctrl-group posBox">
-      <button class="mapboxgl-ctrl-icon mapboxgl-ctrl-geolocate" @click="getLocation"
-              type="button"
-      ></button>
-
-    </div>-->
-    <Spin size="large" fix v-if="showLoad"></Spin>
+    <!--地图切换按钮-->
+    <div @click="changeMap" class="mapToggle">{{mapName}}</div>
+    <!--<Spin  fix v-if="showLoad"></Spin>-->
+    <!--楼层切换按钮-->
+    <div class="floorToggle flex_col mapboxgl-ctrl-group" v-if="showFloors" >
+      <div v-for="(f,i) in floors" :class="curFloor==i?'item curFloor':'item'" @click="toggleFloor(i)">{{f}}</div>
+    </div>
   </div>
 
 </template>
@@ -17,12 +16,17 @@
 
 <script>
   import {RenderMap} from '../js/mapRender'
-
   export default {
     name: 'baseMap',
     data () {
       return {
         showLoad:true,
+        mapName:'高德',
+        floors:[
+          '1F','2F','3F'
+        ],
+        showFloors:false,
+        curFloor:0
       }
     },
     components: {},
@@ -42,16 +46,33 @@
         RenderMap('baseMap', {
           center: [ 114.35476899147034,
             30.529440764451593],
-          zoom: 16,
+          zoom: 17,
           zoomRange:[1,22],
           onLoad (map) {
-           $this.showLoad = false;
+           // $this.showLoad = false;
+            showFloorByZoom(map);
+            map.on('zoomend',function (e) {
+              showFloorByZoom(map);
+            })
           },
           success (map) {
             $this.map = map
 
           }
-        })
+        });
+
+        function showFloorByZoom(map) {
+          let zoom = map.getZoom();
+          if(zoom>=17){
+            $this.showFloors = true;
+            $this.map.setLayoutProperty('border-indoor','visibility','visible');
+            $this.map.setLayoutProperty('fill-indoor','visibility','visible');
+          }else{
+            $this.showFloors = false;
+            $this.map.setLayoutProperty('border-indoor','visibility','none');
+            $this.map.setLayoutProperty('fill-indoor','visibility','none');
+          }
+        }
       },
       //获取当前手机位置
       getLocation () {
@@ -87,7 +108,29 @@
           console.log('Geolocation is not supported by this browser.')
         }
       },
+      //切换地图底图
+      changeMap(){
+        switch (this.mapName) {
+          case '高德':
+            this.mapName = 'OSM';
+            this.map.setLayoutProperty('osm-layer','visibility','visible');
+            this.map.setLayoutProperty('gMap-layer','visibility','none');
+            break;
+          case 'OSM':
+            this.mapName = '高德';
+            this.map.setLayoutProperty('gMap-layer','visibility','visible');
+            this.map.setLayoutProperty('osm-layer','visibility','none');
+            break;
+        }
+      },
+      //切换楼层
+      toggleFloor(floorIndex){
+        let $this = this;
+        $this.curFloor = floorIndex;
+        $this.map.setFilter('border-indoor',['==','floor',floorIndex+1]);
+        $this.map.setFilter('fill-indoor',['==','floor',floorIndex+1]);
 
+      }
     },
     watch: {},
     beforeDestroy (to, from, next) {
@@ -125,4 +168,35 @@
     right: 10px;
   }
 
+  .mapToggle{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #fff;
+    background: #356AFB;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .floorToggle{
+    position: absolute;
+    bottom: 65px;
+    left: 10px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+  .floorToggle .item{
+    border-bottom:1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.7rem;
+  }
+  .floorToggle .item:last-child{
+    border-bottom: none;
+  }
+  .floorToggle .curFloor{
+    color: #356AFB;
+    border: 1px solid  #356AFB !important;
+  }
 </style>

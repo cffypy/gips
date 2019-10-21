@@ -198,3 +198,6 @@ body {
   white-space:nowrap
 }
 
+.mapboxgl-ctrl-scale{
+  margin-left: 70px !important;
+}
