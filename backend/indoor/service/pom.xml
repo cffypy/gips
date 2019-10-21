@@ -11,5 +11,13 @@
   <artifactId>ips-service</artifactId>
   <name>service</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>top.geomatics.ips</groupId>
+      <artifactId>ips-model</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
 
 </project>
