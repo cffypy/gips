@@ -40,17 +40,24 @@ function RenderMap (divId, option) {
           "osm-tiles": {
             "type": "raster",
             'tiles': [
-              "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              MAPCFG.OSMUrl
             ],
             'tileSize': 256
           },
+
+          //高德地图
+          "gaode-tiles":{
+            "type": "raster",
+            "tiles": [MAPCFG.gMapUrl],
+            "tileSize": 256
+          },
           /*"indoor": {
-            "type": "vector",
-            "scheme": "tms",
-            "tiles": [
-              MAPCFG['indoorLayerUrl']
-            ]
-          },*/
+           "type": "vector",
+           "scheme": "tms",
+           "tiles": [
+             MAPCFG['indoorLayerUrl']
+           ]
+         },*/
         },
         "layers": [
           // OSM地图
@@ -59,9 +66,21 @@ function RenderMap (divId, option) {
             "type": "raster",
             "source": "osm-tiles",
             "paint":{
+            },
+            "layout":{
+              "visibility":"none"
             }
           },
-
+          {
+            "id": "layer-gaode",
+            "type": "raster",
+            "source": "gaode-tiles",
+            "minzoom": 2,
+            "maxzoom": 18,
+            "layout":{
+              // "visibility":"none"
+            }
+          },
           // 室内地图
          /* {
             "id": "border",

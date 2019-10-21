@@ -1,21 +1,18 @@
 package top.geomatics.ips.algorithms.knn;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.bytedeco.javacpp.RealSense.intrinsics;
 import org.junit.Before;
 import org.junit.Test;
-
-import it.geosolutions.jaiext.stats.Max;
 import top.geomatics.ips.algorithms.Context;
 import top.geomatics.ips.algorithms.PositioningResult;
 import top.geomatics.ips.database.wlan.DataManager;
 import top.geomatics.ips.model.wlan.AccessPoint;
 import top.geomatics.ips.model.wlan.AccessPointPowerLevels;
 import top.geomatics.ips.model.wlan.WLANMeasurement;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class NearestNeighborAlgorithmTest {
 
