@@ -46,23 +46,28 @@ function RenderMap (divId, option) {
           },
 
           //高德地图
-          "gaode-tiles":{
+          "gMap-tiles":{
             "type": "raster",
             "tiles": [MAPCFG.gMapUrl],
             "tileSize": 256
           },
-          /*"indoor": {
+          //室内地图数据
+          /*"indoor-data": {
            "type": "vector",
            "scheme": "tms",
            "tiles": [
              MAPCFG['indoorLayerUrl']
            ]
          },*/
+          "indoor-data": {
+            "type": "geojson",
+            "data":MAPCFG['indoorLayerUrl']
+          },
         },
         "layers": [
           // OSM地图
           {
-            "id": "osm",
+            "id": "osm-layer",
             "type": "raster",
             "source": "osm-tiles",
             "paint":{
@@ -72,9 +77,9 @@ function RenderMap (divId, option) {
             }
           },
           {
-            "id": "layer-gaode",
+            "id": "gMap-layer",
             "type": "raster",
-            "source": "gaode-tiles",
+            "source": "gMap-tiles",
             "minzoom": 2,
             "maxzoom": 18,
             "layout":{
@@ -82,23 +87,54 @@ function RenderMap (divId, option) {
             }
           },
           // 室内地图
-         /* {
-            "id": "border",
+          {
+            "id": "border-indoor",
             "type": "line",
-            "source": "indoor",
-            "source-layer": "boundary",
+            "source": "indoor-data",
+            // "source-layer": "boundary",
             "layout": {
               "line-join": "round",
-              "line-cap": "round"
+              "line-cap": "round",
+              // "visibility":"none"
             },
             "paint": {
-              "line-color": "#3031ff",
+              "line-color": [
+                "match",
+                ["get","type"],
+                "classroom","#4A8AF4",
+                "other","#19975C",
+                "#FFD764"
+              ],
               "line-width": {
                 "stops": [[6,0.4], [8, 0.6], [13, 1]]
               },
-              // "line-dasharray": [1.5,3]
-            }
-          },*/
+            },
+            filter:[
+              "==","floor",1
+            ]
+          },
+          {
+            "id": "fill-indoor",
+            "type": "fill",
+            "source": "indoor-data",
+            // "source-layer": "boundary",
+            "layout": {
+              // "visibility":"none"
+            },
+            "paint": {
+              "fill-color": [
+                "match",
+                ["get","type"],
+                "classroom","#4A8AF4",
+                "other","#19975C",
+                "#FFD764"
+              ],
+              "fill-opacity": 0.4
+            },
+            filter:[
+              "==","floor",1
+            ]
+          },
         ]
       },
       zoom: zoom,
@@ -118,6 +154,14 @@ function RenderMap (divId, option) {
 
     //控件
     map.addControl(new mapboxgl.NavigationControl());
+    //比例尺控件
+    let scale = new mapboxgl.ScaleControl({
+      maxWidth: 80,
+      unit: 'imperial'
+    });
+    map.addControl(scale);
+
+    scale.setUnit('metric');
     //定位控件
     // Add geolocate control to the map.
      map.addControl(new mapboxgl.GeolocateControl({
