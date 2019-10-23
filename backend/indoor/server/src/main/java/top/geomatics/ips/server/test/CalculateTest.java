@@ -3,19 +3,17 @@ package top.geomatics.ips.server.test;
 import com.alibaba.fastjson.JSON;
 import top.geomatics.ips.server.entity.FP_info;
 import top.geomatics.ips.server.entity.FP_position;
+import top.geomatics.ips.server.entity.PositionResult;
 import top.geomatics.ips.server.entity.ScanInfo;
 import top.geomatics.ips.server.util.FileUtil;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CalculateTest {
     public static void main(String[] args) {
         String json="[{\n" +
                 "\t\"SSID\": \"d8:c7:c8:a7:79:28\",\n" +
-                "\t\"Level\": 64.13333333333334,\n" +
+                "\t\"Level\": 65.13333333333334,\n" +
                 "\t\"BSSID\": \"hhh\"\n" +
                 "}, {\n" +
                 "\t\"SSID\": \"24:69:68:8a:29:c6\",\n" +
@@ -29,7 +27,7 @@ public class CalculateTest {
         calculate(json);
     }
 
-    public static void calculate(String json){
+    public static PositionResult calculate(String json){
         //首先获取到指纹库中的样本数据,目前没有使用数据库，先直接从json文件中获取
         //读取json文件，获取json字符串，将json转化为java对象
         List<ScanInfo> scaninfos = JSON.parseArray(json, ScanInfo.class);
@@ -39,6 +37,7 @@ public class CalculateTest {
             Double a_level = scaninfos.get(i).getLevel();//获取信号强度
             map.put(a_mac, a_level);
         }
+        System.out.println("android手机扫描到的wifi信息（mac地址：rssi信号强度）");
         System.out.println(map);
 
         //读取指纹库数据
@@ -47,6 +46,7 @@ public class CalculateTest {
         //将json转化为java对象
         List<FP_position> fp_positions = JSON.parseArray(jsonContent, FP_position.class);
         List<String> macdata = new ArrayList<String>();
+        HashMap<Integer,Double> endmap=new HashMap<>();
 
         for (int i = 0; i < fp_positions.size(); i++) {
             List<FP_info> fp_infos = fp_positions.get(i).getFP_info();
@@ -57,25 +57,53 @@ public class CalculateTest {
                 double rssi = fp_infos.get(j).getMeanRssi();
                 double cut;
                 if(map.containsKey(mac)){
-                    cut=Math.abs(rssi-map.get(mac));
+                    cut=Math.pow(Math.abs(rssi-map.get(mac)),2);//差值绝对值的平方
                     results.add(cut);
                 }
-
             }
-            System.out.println(results);
+            System.out.println((i+1)+"号点匹配到"+results.size()+"个wifi");
+            System.out.println("对应的信号强度绝对值的平方为"+results);
             double sum=0;
-            for(int x=0;x<=results.size();x++){
-                double a=results.get(i);
-                sum+=a;
-            }
-            System.out.println(sum);
-//            double b=Math.pow(a,2);
-//            for (int x = 0; x < results.size(); x++) {
-//               a=a+results.get(i);
-//            }
-//            System.out.println(a);
-//            System.out.println(Math.sqrt(b));
-        }
+            double distance=0;
 
+            for(int x=0;x<results.size();x++){
+                double a=results.get(x);
+                sum+=a;
+                distance=Math.sqrt(sum);
+            }
+            System.out.println("knn距离为"+distance);
+            System.out.println("     ");
+            endmap.put(i+1,distance);
+
+        }
+        System.out.println(endmap);
+        List<Double> list = new ArrayList<Double>();
+        for (Double value : endmap.values()) {
+            list.add(value);
+        }
+        Double min = Collections.min(list);
+        System.out.println("最小值为"+min);
+        Integer number=getKey(endmap,min);
+        System.out.println("对应的点号为"+number);
+
+        //根据点号找到对应的经纬度坐标信息
+        PositionResult positionResult=new PositionResult();
+        positionResult.setPosLon(fp_positions.get(number).getPosLon());
+        positionResult.setPosLat(fp_positions.get(number).getPosLat());
+        System.out.println(positionResult);
+
+        return positionResult;
     }
+
+     //根据value值获取到对应的key值
+     public static Integer getKey(HashMap<Integer,Double> findmap,Double value){
+                  Integer key = null;
+                  //Map,HashMap并没有实现Iteratable接口.不能用于增强for循环.
+                  for(Integer getKey: findmap.keySet()){
+                         if(findmap.get(getKey).equals(value)){
+                                 key = getKey;
+                            }
+                    }
+                  return key;
+     }
 }
