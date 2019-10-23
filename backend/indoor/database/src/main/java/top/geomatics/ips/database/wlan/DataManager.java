@@ -35,7 +35,8 @@ public class DataManager {
 		List<WLANFingerprint> fps = new ArrayList<WLANFingerprint>();
 		List<Fingerprinter> wifi;
 
-		String pathString = "D:\\ips\\data\\database\\shilintong\\floor_1";
+		//String pathString = "D:\\ips\\data\\database\\shilintong\\floor_1";
+		String pathString = "C:\\Users\\chenfa\\Desktop\\shilintong\\floor_1";
 		String fn = pathString + File.separator + "WifiFPDB.json";
 
 		// 读取json数据

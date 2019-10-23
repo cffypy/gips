@@ -1,6 +1,5 @@
 package top.geomatics.ips.service;
 
-import top.geomatics.ips.model.PositioningResult;
 import top.geomatics.ips.model.wlan.WLANMeasurement;
 
 /**
@@ -19,5 +18,5 @@ public interface PositioningAlgorithm {
      *                     calculate its position
      * @return
      */
-    public PositioningResult calculatePosition(WLANMeasurement measurements);
+    public PositionResult calculatePosition(WLANMeasurement measurements);
 }

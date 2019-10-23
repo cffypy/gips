@@ -1,4 +1,4 @@
-package top.geomatics.ips.server;
+package top.geomatics.ips.server.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -9,7 +9,7 @@ import top.geomatics.ips.model.cf.ScanInfo;
  * @author chenfa
  * 数据存储服务
  */
-@Api(value = "/save", tags = "数据存储服务")
+@Api(value = "/data", tags = "数据存储服务")
 @RestController
 @RequestMapping("/save")
 public class SaveController {

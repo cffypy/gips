@@ -3,13 +3,12 @@ package top.geomatics.ips.model.cf;
 /**
  * @author chenfa
  * 扫描得到的wifi信息，用于进行指纹匹配
- *
  */
 public class ScanInfo {
-    public String apID;
-    public String mac;
-    public String ssid;
-    public String level;
+    public String apID;//AP id
+    public String mac;//mac地址
+    public String ssid;//wifi名称
+    public String level;//信号强度
 
     public String getApID() {
         return apID;

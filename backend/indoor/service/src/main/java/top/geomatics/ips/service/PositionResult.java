@@ -1,19 +1,15 @@
-package top.geomatics.ips.model;
+package top.geomatics.ips.service;
+
 
 /**
  * @author chenfa
- *
+ * 定位结果类
  */
-public class PositioningResult {
+public class PositionResult {
     public double x;
     public double y;
 
-    public PositioningResult() {
-    }
-
-    public PositioningResult(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public PositionResult() {
     }
 
     public double getX() {
