@@ -11,5 +11,5 @@ import top.geomatics.ips.server.entity.PositionResult;
 public interface PositionService {
 
     //android传递过来的json数据
-    public void calculatePosition(String json);
+    public PositionResult calculatePosition(String json);
 }

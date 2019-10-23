@@ -38,10 +38,10 @@ public class PositionController{
 
     @ApiOperation(value = "利用cf算法", notes = "cf算法")
     @PostMapping("/cf")
-    public void cf(@RequestParam String json){
+    public PositionResult cf(@RequestParam String json){
         PositionServiceImpl positionService=new PositionServiceImpl();
-        positionService.calculatePosition(json);
         System.out.println("定位完成");
+        return positionService.calculatePosition(json);
     }
 
     @ApiOperation(value = "利用knn算法", notes = "knn算法")
@@ -59,8 +59,6 @@ public class PositionController{
         PositioningResult positioningResult=bayes.calculatePosition(measurements);
         return positioningResult;
     }
-
-
 
     @ApiOperation(value = "读取android手机提交的wifi数据", notes = "读取android手机提交的wifi数据")
     @PostMapping("/android")

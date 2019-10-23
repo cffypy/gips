@@ -88,8 +88,8 @@ public class CalculateTest {
 
         //根据点号找到对应的经纬度坐标信息
         PositionResult positionResult=new PositionResult();
-        positionResult.setPosLon(fp_positions.get(number).getPosLon());
-        positionResult.setPosLat(fp_positions.get(number).getPosLat());
+        positionResult.setLon(fp_positions.get(number).getPosLon());
+        positionResult.setLat(fp_positions.get(number).getPosLat());
         System.out.println(positionResult);
 
         return positionResult;
