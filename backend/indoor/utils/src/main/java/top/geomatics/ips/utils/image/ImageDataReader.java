@@ -14,10 +14,16 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bytedeco.javacpp.opencv_core.KeyPoint;
-import org.bytedeco.javacpp.opencv_core.Mat;
-import org.bytedeco.javacpp.opencv_core.Point2f;
-import org.bytedeco.javacpp.opencv_core.Point3d;
+//import org.bytedeco.javacpp.opencv_core.KeyPoint;
+//import org.bytedeco.javacpp.opencv_core.Mat;
+//import org.bytedeco.javacpp.opencv_core.Point2f;
+//import org.bytedeco.javacpp.opencv_core.Point3d;
+
+import org.opencv.core.Mat;
+import org.opencv.core.KeyPoint;
+import org.opencv.core.Point;
+import org.opencv.core.Point3;
+import org.opencv.core.Core;
 
 import com.alibaba.fastjson.JSON;
 
@@ -31,6 +37,8 @@ public class ImageDataReader {
 	private List<Data> objs = new ArrayList<Data>();
 
 	public void loadOBJ(String filename, String wr) {
+
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
 		File file = new File(filename);
 		if (!file.exists()) {
@@ -53,13 +61,11 @@ public class ImageDataReader {
 				double x = Double.longBitsToDouble(Long.reverseBytes(is.readLong()));
 				double y = Double.longBitsToDouble(Long.reverseBytes(is.readLong()));
 				double z = Double.longBitsToDouble(Long.reverseBytes(is.readLong()));
-				System.out.println("x:" + x + " y: " + y + " z: " + z);
+				//System.out.println("x:" + x + " y: " + y + " z: " + z);
 				writeLine(writer, "x:" + x + " y: " + y + " z: " + z);
 
-				t.pt = new Point3d();
-				t.pt.put(x);
-				t.pt.put(y);
-				t.pt.put(z);
+				t.pt3 = new Point3(x,y,z);
+
 
 				int sucnt = Integer.reverseBytes(is.readInt());
 				writeLine(writer, "size: " + sucnt);
@@ -84,9 +90,7 @@ public class ImageDataReader {
 
 					writeLine(writer, c);
 
-					Point2f pf = new Point2f(px, py);
-
-					key.pt = new KeyPoint(pf, sz, angle, response, oct, cls_id);
+					key.kpt = new KeyPoint(px,py, sz, angle, response, oct, cls_id);
 					t.marks.add(key);
 				}
 
@@ -98,10 +102,18 @@ public class ImageDataReader {
 
 				writeLine(writer, sc);
 
-				t.des = new Mat(rows, cols, type_);
-				int total_ = rows * t.des.step(0);
-				byte b[] = new byte[total_];
-				int sss = is.read(b);
+				t.des = new Mat(rows, cols , type_);
+				long total_ = rows * t.des.step1(0);
+				//byte b[] = new byte[total_];
+				//int sss = is.read(b);
+
+
+				for(int m = 0; m < cols; m++){
+					float descriptor_m = Float.intBitsToFloat(Integer.reverseBytes(is.readInt()));
+					t.des.put(0,m,descriptor_m);
+				}
+
+
 				int cx = is.readUnsignedByte();
 				int cy = is.readUnsignedByte();
 				int cz = is.readUnsignedByte();
@@ -126,6 +138,16 @@ public class ImageDataReader {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+
+	}
+
+	public void run(Mat desc, List<Point3> pt3List){
+		int featureNum = objs.size();
+		desc = new Mat(featureNum, 64, 5);
+		for (Data it:objs){
+			desc.push_back(it.des);
+			pt3List.add(it.pt3);
 		}
 
 	}
@@ -171,7 +193,7 @@ public class ImageDataReader {
 		int id = 0;
 		List<IMG_KEY> marks;
 		Mat des;// 描述子
-		Point3d pt;
+		Point3 pt3;
 		int[] colors;
 
 	}
@@ -179,6 +201,6 @@ public class ImageDataReader {
 	public class IMG_KEY {
 		int IMG_ID;
 		int KEY_ID;
-		KeyPoint pt;
+		KeyPoint kpt;
 	}
 }
