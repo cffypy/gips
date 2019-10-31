@@ -28,19 +28,12 @@ import java.util.*;
 @RequestMapping("/position")
 public class PositionController{
 
-    @ApiOperation(value = "测试", notes = "测试")
-    @PostMapping("/test")
-    public String test(@RequestBody  @ApiParam(name = "请求对象", value = "传入json格式", required = true)Test test ){
-        //@RequestBody注解是将传过来的json数据直接转换成JavaBean对象
-        System.out.println(test.getName());
-        return test.getName();
-    }
+    @Autowired
+    public PositionServiceImpl positionService;
 
     @ApiOperation(value = "利用cf算法", notes = "cf算法")
     @PostMapping("/cf")
     public PositionResult cf(@RequestParam String json){
-        PositionServiceImpl positionService=new PositionServiceImpl();
-        System.out.println("定位完成");
         return positionService.calculatePosition(json);
     }
 
@@ -50,6 +43,14 @@ public class PositionController{
         NearestNeighborAlgorithm knn=new NearestNeighborAlgorithm();
         PositioningResult positioningResult=knn.calculatePosition(measurements);
         return positioningResult;
+    }
+
+    @ApiOperation(value = "测试", notes = "测试")
+    @PostMapping("/test")
+    public String test(@RequestBody  @ApiParam(name = "请求对象", value = "传入json格式", required = true)Test test ){
+        //@RequestBody注解是将传过来的json数据直接转换成JavaBean对象
+        System.out.println(test.getName());
+        return test.getName();
     }
 
     @ApiOperation(value = "利用bayes算法", notes = "bayes算法")
