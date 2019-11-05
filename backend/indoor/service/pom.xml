@@ -17,6 +17,13 @@
       <artifactId>ips-model</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
+
+    <!-- 增加spring-boot-starter-web依赖 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
   </dependencies>
 
 

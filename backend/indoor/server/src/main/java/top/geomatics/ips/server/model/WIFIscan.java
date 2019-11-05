@@ -1,11 +1,10 @@
-package top.geomatics.ips.server.entity;
+package top.geomatics.ips.server.model;
 
 /**
  * Copyright 2019 bejson.com
  */
 
 import lombok.Data;
-import top.geomatics.ips.model.wifi.WifiScanInfo;
 
 import java.util.Date;
 import java.util.List;

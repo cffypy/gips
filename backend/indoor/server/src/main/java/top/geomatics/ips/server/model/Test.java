@@ -1,4 +1,4 @@
-package top.geomatics.ips.server.entity;
+package top.geomatics.ips.server.model;
 
 import lombok.Data;
 

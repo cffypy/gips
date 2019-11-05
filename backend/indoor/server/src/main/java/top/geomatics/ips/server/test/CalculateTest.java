@@ -1,15 +1,17 @@
 package top.geomatics.ips.server.test;
 
 import com.alibaba.fastjson.JSON;
-import top.geomatics.ips.server.entity.FP_info;
-import top.geomatics.ips.server.entity.FP_position;
-import top.geomatics.ips.server.entity.PositionResult;
-import top.geomatics.ips.server.entity.ScanInfo;
+import lombok.Value;
+import top.geomatics.ips.server.model.FP_info;
+import top.geomatics.ips.server.model.FP_position;
+import top.geomatics.ips.server.model.PositionResult;
+import top.geomatics.ips.server.model.ScanInfo;
 import top.geomatics.ips.server.util.FileUtil;
 
 import java.util.*;
 
 public class CalculateTest {
+
     public static void main(String[] args) {
         String json="[{\n" +
                 "\t\"SSID\": \"d8:c7:c8:a7:79:28\",\n" +

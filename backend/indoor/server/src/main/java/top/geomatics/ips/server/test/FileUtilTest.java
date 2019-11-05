@@ -1,7 +1,8 @@
-package top.geomatics.ips.server.util;
+package top.geomatics.ips.server.test;
 
 import com.alibaba.fastjson.JSON;
-import top.geomatics.ips.server.entity.WifiRoot;
+import top.geomatics.ips.server.model.WifiRoot;
+import top.geomatics.ips.server.util.FileUtil;
 
 import java.util.List;
 

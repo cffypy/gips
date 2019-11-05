@@ -1,8 +1,7 @@
 package top.geomatics.ips.server.service;
 
 
-import top.geomatics.ips.model.cf.ScanInfo;
-import top.geomatics.ips.server.entity.PositionResult;
+import top.geomatics.ips.server.model.PositionResult;
 
 /**
  * @author chenfa

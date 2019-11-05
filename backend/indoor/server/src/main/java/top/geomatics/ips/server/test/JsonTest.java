@@ -1,9 +1,8 @@
 package top.geomatics.ips.server.test;
 
 import com.alibaba.fastjson.JSON;
-import org.springframework.web.bind.annotation.RequestParam;
-import top.geomatics.ips.server.entity.FP_info;
-import top.geomatics.ips.server.entity.FP_position;
+import top.geomatics.ips.server.model.FP_info;
+import top.geomatics.ips.server.model.FP_position;
 import top.geomatics.ips.server.util.FileUtil;
 
 import java.util.ArrayList;
