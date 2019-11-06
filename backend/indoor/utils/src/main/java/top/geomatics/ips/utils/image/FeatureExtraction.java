@@ -28,8 +28,9 @@ public class FeatureExtraction {
         System.out.println("descriptors.rows=" + descriptors.rows());
         return keyPoints;
     }
-    public MatOfDMatch matchFeature(Mat descriptors, Mat descriptors_store, List<Point3> points3){
 
+
+    public MatOfDMatch matchFeature(Mat descriptors, Mat descriptors_store, List<Point3> points3){
 
         FlannBasedMatcher matcher = new FlannBasedMatcher();
         MatOfDMatch matches = new MatOfDMatch();
@@ -60,7 +61,5 @@ public class FeatureExtraction {
         }
 
         return good_matches;
-
-
     }
 }
