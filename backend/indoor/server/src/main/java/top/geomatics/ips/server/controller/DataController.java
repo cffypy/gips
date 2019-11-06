@@ -3,16 +3,18 @@ package top.geomatics.ips.server.controller;
 import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import top.geomatics.ips.server.model.FP_info;
 import top.geomatics.ips.server.model.FP_position;
 import top.geomatics.ips.server.model.ScanInfo;
+import top.geomatics.ips.server.service.FileServiceImpl;
 import top.geomatics.ips.server.util.Csv2json;
 import top.geomatics.ips.server.util.FileUtil;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,10 +24,20 @@ import java.util.Map;
  * @author chenfa
  * 数据服务
  */
-@Api(value = "/data", tags = "数据转换服务")
-@RestController
+@Api(value = "/data", tags = "数据服务")
+@Controller
 @RequestMapping("/data")
 public class DataController {
+
+    @Autowired
+    public FileServiceImpl fileService;
+
+    @ApiOperation(value = "保存wifi信息", notes = "保存wifi信息")
+    @PostMapping("/mysql")
+    @ResponseBody
+    public void mysql(@RequestBody ScanInfo scaninfo){
+
+    }
 
     @ApiOperation(value = "读取json文件", notes = "读取json文件")
     @PostMapping("/readjson")

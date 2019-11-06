@@ -22,8 +22,7 @@ import java.util.*;
  * @author chenfa
  * 基于wifi的室内定位
  */
-
-@Api(value = "/position", tags = "Wifi定位服务")
+@Api(value = "/position", tags = "定位服务")
 @RestController
 @RequestMapping("/position")
 public class PositionController{

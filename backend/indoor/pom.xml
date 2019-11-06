@@ -43,66 +43,49 @@
 	<properties>
 		<!-- 打包输出文件的路径 -->
 		<outputDirectory>D:\\ips\\application\\lib</outputDirectory>
-
 		<!-- 编码 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<!-- JDK版本 -->
 		<java.version>11</java.version>
-
 		<!-- JUnit版本 -->
 		<junit.version>4.12</junit.version>
-
 		<!-- 日志版本 -->
 		<slf4j.version>1.7.28</slf4j.version>
 		<logging.version>1.2</logging.version>
 		<!-- log4j2 版本 -->
 		<log4j.version>2.12.0</log4j.version>
-
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
 		<configuration2.version>2.5</configuration2.version>
-
 		<!-- json版本 -->
 		<fastjson.version>1.2.60</fastjson.version>
 		<!-- dom4j版本 -->
 		<dom4j.version>2.1.1</dom4j.version>
-
 		<!-- Spring版本 -->
 		<springframework.version>5.1.8.RELEASE</springframework.version>
-
 		<!-- Springfox版本 -->
 		<springfox.version>2.9.2</springfox.version>
-
 		<!-- sqlite版本 -->
 		<sqlite.version>3.28.0</sqlite.version>
-
 		<!-- mybatis版本 -->
 		<mybatis.version>3.5.2</mybatis.version>
-
 		<!-- csv,excel版本 -->
 		<opencsv_version>4.5</opencsv_version>
 		<poi_version>4.0.1</poi_version>
 		<easyexcel.version>1.1.1</easyexcel.version>
-
 		<!-- geotools版本 -->
 		<geotools.version>22-RC</geotools.version>
-
 		<!-- commons text版本 -->
 		<commons_text.version>1.6</commons_text.version>
 		<!-- commons compress版本 -->
 		<commons_compress.version>1.18</commons_compress.version>
 		<!-- deeplearning4j版本 -->
 		<deeplearning4j.version>0.9.1</deeplearning4j.version>
-
 		<!-- servlet-api版本 -->
 		<servlet-api.version>4.0.1</servlet-api.version>
-
 		<!-- Simple XML 版本 -->
 		<simpleframework.version>2.7.1</simpleframework.version>
 		<!-- Commons io版本 -->
 		<commons_io_version>2.6</commons_io_version>
-
-
 	</properties>
 
 	<!-- maven 远程仓库位置 -->
@@ -411,7 +394,11 @@
 				<version>${simpleframework.version}</version>
 			</dependency>
 
-
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>2.1.1</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>

@@ -12,4 +12,5 @@ public class ScanInfo {
     public String SSID;//mac地址
     public String BSSID;//wifi名称
     public Double Level;//信号强度
+
 }

@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Api(value = "/file", tags = "视图服务")
+@Api(value = "/view", tags = "视图服务")
 @Controller
 public class ViewController {
 
@@ -26,4 +26,5 @@ public class ViewController {
     public String result(){
         return "/result";
     }
+
 }

@@ -7,7 +7,7 @@ import top.geomatics.ips.server.model.ScanInfo;
 import java.util.List;
 
 @Service
-public class SaveServiceImpl implements  SaveService {
+public class DataServiceImpl implements DataService {
 
     @Override
     public void save(String json) {
