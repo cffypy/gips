@@ -1,4 +1,4 @@
-package top.geomatics.ips.server.entity;
+package top.geomatics.ips.server.model;
 
 /**
  * Copyright 2019 bejson.com
@@ -19,6 +19,6 @@ public class WIFIscan {
 
     private int Round;//采集次数
     private Date Date;//数据采集时间
-    private List<WifiScanInfo> WifiScanInfo;//采集时候扫描获取的wifi信息
+    private List<top.geomatics.ips.model.wifi.WifiScanInfo> WifiScanInfo;//采集时候扫描获取的wifi信息
 
 }

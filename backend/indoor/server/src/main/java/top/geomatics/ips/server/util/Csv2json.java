@@ -15,7 +15,7 @@ import java.util.List;
  * @author chenfa
  * csv转json
  */
-public class CSVToJSon {
+public class Csv2json {
 
     private List<String> stringToList(String s, String sep) {
         if (s == null) {
@@ -99,8 +99,8 @@ public class CSVToJSon {
     public static void main(String[] args) throws Exception {
         String filePath = "data.csv";
         String outPutPath = "data.json";
-        CSVToJSon csvToJSon = new CSVToJSon();
-        csvToJSon.ConvertToJson(filePath, outPutPath);
+        Csv2json csv2json = new Csv2json();
+        csv2json.ConvertToJson(filePath, outPutPath);
         System.out.println("处理完成");
     }
 
