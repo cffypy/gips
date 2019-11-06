@@ -27,7 +27,7 @@ public class ImageDataReaderTest {
     public  void testRun(){
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
-        Mat descriptors = new Mat(0,64,5);
+        Mat descriptors = new Mat(1,64,5);
         List<Point3> point3s = new ArrayList<Point3>();
         String pathString = "E:\\Projects\\诗琳通视觉定位数据";
         String rf = pathString + File.separator + "extractorType-OBJ-212.dat";
