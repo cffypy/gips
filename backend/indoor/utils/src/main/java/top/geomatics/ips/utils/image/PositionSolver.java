@@ -4,6 +4,7 @@ import org.opencv.calib3d.Calib3d;
 import org.opencv.core.*;
 import java.nio.ByteBuffer;
 
+import static org.opencv.calib3d.Calib3d.CV_P3P;
 import static org.opencv.calib3d.Calib3d.Rodrigues;
 
 public class PositionSolver {
@@ -77,7 +78,7 @@ public class PositionSolver {
 
         //PNP解算位姿函数的参数
         Calib3d.solvePnPRansac(objectPoints, imagePoints,cameraParameter, distCoeffs, rvec,  tvec,
-                true,iterationsCount,reprojectionError,confidence,inliers,0);
+                true,iterationsCount,reprojectionError,confidence,inliers,CV_P3P);
 
         System.out.println("旋转矩阵："+rvec+"/n");
         System.out.println("平移矩阵："+tvec);
@@ -94,16 +95,20 @@ public class PositionSolver {
         imagePoint.get(0,0)[0]= inPoints.x;
         imagePoint.get(1, 0)[0]= inPoints.y;
 
-        //计算
-        Mat tempMat = new Mat();
-        Mat tempMat2 = new Mat();
-        tempMat = rotationMatrix.inv().mul(cameraMatrix.inv().mul(imagePoint));
-        tempMat2 = rotationMatrix.inv().mul( tvec1 );
+        //计算系数
+        Mat tempMat = rotationMatrix.inv().mul(cameraMatrix.inv().mul(imagePoint));
+        Mat tempMat2 = rotationMatrix.inv().mul( tvec1 );
         s = zConst + tempMat2.get(2, 0)[0];
         s /= tempMat.get(2,0)[0];
 
         //计算世界坐标
-        Mat wcPoint = rotationMatrix.inv().mul ((cameraMatrix.inv().mul(imagePoint))*s - tvec);
+        Mat m_sub = new Mat();
+        Mat m_scale = new Mat();
+        Mat m = cameraMatrix.inv().mul(imagePoint);
+        //乘以系数s
+        //Core.convertScaleAbs(m , m_scale, s);
+        Core.subtract(m_scale,tvec1, m_sub);
+        Mat wcPoint = rotationMatrix.inv().mul (m_sub);
         Point3 worldPoint = new Point3(wcPoint.get(0,0)[0], wcPoint.get(0,1)[0], wcPoint.get(2, 0)[0]);
         return worldPoint;
 
