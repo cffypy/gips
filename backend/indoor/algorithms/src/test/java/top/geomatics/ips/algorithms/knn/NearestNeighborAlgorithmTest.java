@@ -21,7 +21,6 @@ public class NearestNeighborAlgorithmTest {
 	@Before
 	public void setup() {
 		DataManager dataManager = new DataManager();
-
 		Context context = new Context(dataManager);
 		al = new NearestNeighborAlgorithm(context);
 	}
@@ -90,7 +89,6 @@ public class NearestNeighborAlgorithmTest {
 		yList.add(30.46994365);
 		// Point No 165
 		temp.put("0c:73:eb:d0:7c:38", 80.0);
-
 		macs.add("0c:73:eb:d0:7c:38");
 		rss.add(80.0);
 		xList.add(114.52643244);

@@ -21,7 +21,6 @@ import top.geomatics.ips.model.wlan.WLANMeasurement;
 
 /**
  * The nearest neighbor algorithm implemented using the ForkJoin framework.
- * 
  * @author whudyj
  *
  */

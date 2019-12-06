@@ -1,6 +1,5 @@
 package top.geomatics.ips.service;
 
-import top.geomatics.ips.model.PositioningResult;
 import top.geomatics.ips.model.wifi.WifiScanInfo;
 
 /**
@@ -15,6 +14,6 @@ public interface Position {
      * @param wifiinfo Measurement from the client that will be used to calculate itsposition
      * @return
      */
-    public PositioningResult calculate(WifiScanInfo wifiinfo);
+    public PositionResult calculate(WifiScanInfo wifiinfo);
 
 }

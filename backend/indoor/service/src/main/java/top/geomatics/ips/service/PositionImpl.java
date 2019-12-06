@@ -1,6 +1,5 @@
 package top.geomatics.ips.service;
 
-import top.geomatics.ips.model.PositioningResult;
 import top.geomatics.ips.model.wifi.WifiScanInfo;
 
 /**
@@ -10,9 +9,9 @@ import top.geomatics.ips.model.wifi.WifiScanInfo;
 public class PositionImpl implements Position {
 
     @Override
-    public PositioningResult calculate(WifiScanInfo wifiinfo) {
+    public PositionResult calculate(WifiScanInfo wifiinfo) {
 
-        PositioningResult positionResult=new PositioningResult();
+        PositionResult positionResult=new PositionResult();
         return positionResult;
     }
 }

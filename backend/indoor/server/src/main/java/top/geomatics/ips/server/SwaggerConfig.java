@@ -27,11 +27,9 @@ public class SwaggerConfig {
 						.version("版本号:1.0")
 						.build())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("top.geomatics.ips.server"))
+				.apis(RequestHandlerSelectors.basePackage("top.geomatics.ips.server.controller"))
 				.paths(PathSelectors.any())
 				.build();
 	}
-
-
 
 }
