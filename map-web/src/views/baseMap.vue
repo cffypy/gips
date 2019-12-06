@@ -44,9 +44,11 @@
       init () {
         let $this = this;
         RenderMap('baseMap', {
-          center: [ 114.35476899147034,
-            30.529440764451593],
-          zoom: 17,
+         /* center: [ 114.35476899147034,
+            30.529440764451593],*/
+          center:[ 114.52629,
+            30.4698],
+          zoom: 19,
           zoomRange:[1,22],
           onLoad (map) {
            // $this.showLoad = false;
@@ -62,7 +64,9 @@
         });
 
         function showFloorByZoom(map) {
-          let zoom = map.getZoom();
+          $this.map.setLayoutProperty('border-indoor','visibility','visible');
+          $this.map.setLayoutProperty('fill-indoor','visibility','visible');
+         /* let zoom = map.getZoom();
           if(zoom>=17){
             $this.showFloors = true;
             $this.map.setLayoutProperty('border-indoor','visibility','visible');
@@ -71,7 +75,7 @@
             $this.showFloors = false;
             $this.map.setLayoutProperty('border-indoor','visibility','none');
             $this.map.setLayoutProperty('fill-indoor','visibility','none');
-          }
+          }*/
         }
       },
       //获取当前手机位置

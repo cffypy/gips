@@ -52,17 +52,17 @@ function RenderMap (divId, option) {
             "tileSize": 256
           },
           //室内地图数据
-          /*"indoor-data": {
+          "indoor-data": {
            "type": "vector",
            "scheme": "tms",
            "tiles": [
              MAPCFG['indoorLayerUrl']
            ]
-         },*/
-          "indoor-data": {
+         },
+          /*"indoor-data": {
             "type": "geojson",
             "data":MAPCFG['indoorLayerUrl']
-          },
+          },*/
         },
         "layers": [
           // OSM地图
@@ -73,9 +73,10 @@ function RenderMap (divId, option) {
             "paint":{
             },
             "layout":{
-              "visibility":"none"
+              // "visibility":"none"
             }
           },
+          //高德地图
           {
             "id": "gMap-layer",
             "type": "raster",
@@ -83,7 +84,7 @@ function RenderMap (divId, option) {
             "minzoom": 2,
             "maxzoom": 18,
             "layout":{
-              // "visibility":"none"
+              "visibility":"none"
             }
           },
           // 室内地图
@@ -91,35 +92,30 @@ function RenderMap (divId, option) {
             "id": "border-indoor",
             "type": "line",
             "source": "indoor-data",
-            // "source-layer": "boundary",
+            "source-layer": "boundary",
             "layout": {
               "line-join": "round",
               "line-cap": "round",
-              // "visibility":"none"
+              "visibility":"none"
             },
             "paint": {
-              "line-color": [
-                "match",
-                ["get","type"],
-                "classroom","#4A8AF4",
-                "other","#19975C",
-                "#FFD764"
-              ],
-              "line-width": {
+              "line-color":"#4A8AF4",
+              "line-width":2
+              /*"line-width": {
                 "stops": [[6,0.4], [8, 0.6], [13, 1]]
-              },
+              },*/
             },
-            filter:[
+            /*filter:[
               "==","floor",1
-            ]
+            ]*/
           },
           {
             "id": "fill-indoor",
             "type": "fill",
             "source": "indoor-data",
-            // "source-layer": "boundary",
+            "source-layer": "boundary",
             "layout": {
-              // "visibility":"none"
+              "visibility":"none"
             },
             "paint": {
               "fill-color": [
