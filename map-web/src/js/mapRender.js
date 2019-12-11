@@ -51,18 +51,23 @@ function RenderMap (divId, option) {
             "tiles": [MAPCFG.gMapUrl],
             "tileSize": 256
           },
-          //室内地图数据
-          "indoor-data": {
+          //室内地图矢量数据
+          "indoor-data-vector": {
            "type": "vector",
            "scheme": "tms",
            "tiles": [
-             MAPCFG['indoorLayerUrl']
+             MAPCFG['indoorVectorUrl']
            ]
          },
-          /*"indoor-data": {
-            "type": "geojson",
-            "data":MAPCFG['indoorLayerUrl']
-          },*/
+          //室内地图栅格数据
+          "indoor-data-tiles": {
+            "type": "raster",
+            "scheme": "tms",
+            "tiles": [
+              MAPCFG['indoorTileUrl']
+            ],
+            "tileSize": 512
+          },
         },
         "layers": [
           // OSM地图
@@ -70,10 +75,12 @@ function RenderMap (divId, option) {
             "id": "osm-layer",
             "type": "raster",
             "source": "osm-tiles",
+            "minzoom": 2,
+            "maxzoom": 17,
             "paint":{
             },
             "layout":{
-              // "visibility":"none"
+              "visibility":"none"
             }
           },
           //高德地图
@@ -84,19 +91,32 @@ function RenderMap (divId, option) {
             "minzoom": 2,
             "maxzoom": 18,
             "layout":{
-              "visibility":"none"
+              // "visibility":"none"
             }
           },
+          //室内地图栅格图层
+          /*{
+            "id": "indoor-layer",
+            "type": "raster",
+            "source": "indoor-data-tiles",
+            "minzoom": 18,
+            "maxzoom": 22,
+            "layout":{
+              "visibility":"none"
+            }
+          },*/
           // 室内地图
           {
             "id": "border-indoor",
             "type": "line",
-            "source": "indoor-data",
-            "source-layer": "boundary",
+            "source": "indoor-data-vector",
+            "source-layer": "unit",
+            "minzoom": 17,
+            "maxzoom": 22,
             "layout": {
               "line-join": "round",
               "line-cap": "round",
-              "visibility":"none"
+              // "visibility":"none"
             },
             "paint": {
               "line-color":"#4A8AF4",
@@ -106,25 +126,28 @@ function RenderMap (divId, option) {
               },*/
             },
             /*filter:[
-              "==","floor",1
+              "==","floor",1.0
             ]*/
           },
           {
             "id": "fill-indoor",
             "type": "fill",
-            "source": "indoor-data",
-            "source-layer": "boundary",
+            "source": "indoor-data-vector",
+            "source-layer": "unit",
+            "minzoom": 17,
+            "maxzoom": 22,
             "layout": {
-              "visibility":"none"
+              // "visibility":"none"
             },
             "paint": {
-              "fill-color": [
+              "fill-color": "#FFD764"
+                /*[
                 "match",
                 ["get","type"],
                 "classroom","#4A8AF4",
                 "other","#19975C",
                 "#FFD764"
-              ],
+              ]*/,
               "fill-opacity": 0.4
             },
             filter:[
