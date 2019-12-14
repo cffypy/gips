@@ -11,7 +11,7 @@ public class PositionSolver {
 
     public Mat rvec = new Mat(3,1,5);
     public Mat tvec = new Mat(3,1,5);
-    public  Mat cameraParameter;
+    public Mat cameraParameter;
     public MatOfDouble distCoeffs;
 
     public static byte[] DoubleToBytes(double d){

@@ -23,7 +23,7 @@
         showLoad:true,
         mapName:'高德',
         floors:[
-          '1F','2F','3F'
+          '1F','2F','3F','4F','5F'
         ],
         showFloors:false,
         curFloor:0
@@ -44,16 +44,21 @@
       init () {
         let $this = this;
         RenderMap('baseMap', {
-          center: [ 114.35476899147034,
-            30.529440764451593],
-          zoom: 17,
+         /* center: [ 114.35476899147034,
+            30.529440764451593],*/
+          center:[ 114.52629,
+            30.4698],
+          zoom: 19,
           zoomRange:[1,22],
           onLoad (map) {
            // $this.showLoad = false;
             showFloorByZoom(map);
             map.on('zoomend',function (e) {
               showFloorByZoom(map);
-            })
+            });
+            /*map.on('click','fill-indoor',function (e) {
+              debugger
+            })*/
           },
           success (map) {
             $this.map = map
@@ -65,12 +70,8 @@
           let zoom = map.getZoom();
           if(zoom>=17){
             $this.showFloors = true;
-            $this.map.setLayoutProperty('border-indoor','visibility','visible');
-            $this.map.setLayoutProperty('fill-indoor','visibility','visible');
           }else{
             $this.showFloors = false;
-            $this.map.setLayoutProperty('border-indoor','visibility','none');
-            $this.map.setLayoutProperty('fill-indoor','visibility','none');
           }
         }
       },
@@ -129,7 +130,6 @@
         $this.curFloor = floorIndex;
         $this.map.setFilter('border-indoor',['==','floor',floorIndex+1]);
         $this.map.setFilter('fill-indoor',['==','floor',floorIndex+1]);
-
       }
     },
     watch: {},
@@ -171,7 +171,7 @@
   .mapToggle{
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    right: 10px;
     color: #fff;
     background: #356AFB;
     width: 40px;
@@ -184,7 +184,7 @@
   }
   .floorToggle{
     position: absolute;
-    bottom: 65px;
+    bottom: 10px;
     left: 10px;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   }

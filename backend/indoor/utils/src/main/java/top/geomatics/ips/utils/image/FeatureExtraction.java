@@ -4,14 +4,9 @@ import org.opencv.core.*;
 import org.opencv.features2d.FlannBasedMatcher;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.xfeatures2d.SURF;
-import org.opencv.highgui.HighGui;
-import org.opencv.features2d.DescriptorExtractor;
-import org.opencv.features2d.FeatureDetector;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.lang.Math.*;
 
 public class FeatureExtraction {
 
@@ -45,21 +40,24 @@ public class FeatureExtraction {
     }
 
 
-    public MatOfDMatch matchFeature(Mat descriptors, Mat descriptors_store, List<Point3> points3){
+    public MatOfDMatch matchFeature(Mat descriptors, Mat descriptors_store){
 
         FlannBasedMatcher matcher = FlannBasedMatcher.create();
         MatOfDMatch matches = new MatOfDMatch();
 
         //读取特征库 descriptors_store
-        ImageDataReader ir = new ImageDataReader();
 
-        ir.loadOBJ(rf, wf);
-        ir.loadDes(descriptors_store,points3);
+      //  ImageDataReader ir = new ImageDataReader();
+        FeatureDataReader fr = new FeatureDataReader();
+
+      //  ir.loadOBJ(rf, wf);
+ //     ir.loadDes(descriptors_store,points3);
+
 
         //将descriptors_store输出到文件
 
         //特征匹配 matches
-        matcher.match(descriptors,descriptors_store,matches);
+        matcher.match(descriptors, descriptors_store,matches);
 
         //最大距离和最小距离
         double max_dist = 0; double min_dist = 100;

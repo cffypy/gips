@@ -3,6 +3,7 @@ package top.geomatics.ips.algorithms.image;
 
 import org.junit.Test;
 import org.opencv.core.*;
+import top.geomatics.ips.utils.image.FeatureDataReader;
 import top.geomatics.ips.utils.image.FeatureExtraction;
 import top.geomatics.ips.utils.image.PositionSolver;
 
@@ -16,6 +17,8 @@ public class PositionSolverTest {
     FeatureExtraction fe;
     Point3 worldPoint;
 
+    private FeatureDataReader fr = new FeatureDataReader();
+
     @Test
     public void testPositionSolver(){
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -25,11 +28,12 @@ public class PositionSolverTest {
         Mat descriptors_query = new Mat();
         MatOfKeyPoint image_keyPoints = fe.extractFeature(file_path, descriptors_query);
 
-        Mat descriptors_store = new Mat(1,64,5);
-        List<Point3> point3s = new ArrayList<Point3>();
+        fr.readJson();
+        Mat descriptors_store = fr.readDes();
+        List<Point3> point3List= fr.readPoint3();
 
         //找出匹配点对matches
-        MatOfDMatch good_matches = fe.matchFeature(descriptors_query,descriptors_store,point3s);
+        MatOfDMatch good_matches = fe.matchFeature(descriptors_query, descriptors_store);
 
         MatOfPoint2f image_points = new MatOfPoint2f();
         MatOfPoint3f object_points = new MatOfPoint3f();
@@ -42,7 +46,7 @@ public class PositionSolverTest {
             int imageKPID = good_matches.toArray()[i].queryIdx;
             int objectKPID = good_matches.toArray()[i].trainIdx;
             Point point2f = image_keyPoints.toArray()[imageKPID].pt;
-            Point3 point3f = point3s.get(objectKPID);
+            Point3 point3f = point3List.get(objectKPID);
             best_image_points.add(point2f);
             best_object_points.add(point3f);
 
