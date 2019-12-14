@@ -1,12 +1,11 @@
-package top.geomatics.ips.utils.image;
+package src.main.java.top.geomatics.ips.utils.image;
 
-import org.opencv.core.*;
-import org.opencv.features2d.FlannBasedMatcher;
-import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.xfeatures2d.SURF;
+//import org.opencv.core.*;
+//import org.opencv.features2d.FlannBasedMatcher;
+//import org.opencv.imgcodecs.Imgcodecs;
+//import org.opencv.xfeatures2d.SURF;
 
 import java.io.File;
-import java.util.List;
 
 public class FeatureExtraction {
 
@@ -15,7 +14,7 @@ public class FeatureExtraction {
     private String wf = pathString + File.separator + "extractorType-OBJ-212888.json";
 
 
-    public MatOfKeyPoint extractFeature(String img_file, Mat descriptors) {
+    /*public MatOfKeyPoint extractFeature(String img_file, Mat descriptors) {
 
 
         SURF surf = SURF.create();
@@ -79,5 +78,5 @@ public class FeatureExtraction {
         System.out.println("筛选出的匹配点good_matches对数为"+good_matches.cols());
 
         return good_matches;
-    }
+    }*/
 }

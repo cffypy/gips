@@ -1,25 +1,17 @@
-package top.geomatics.ips.algorithms.image;
+package top.geomatics.ips.utils.image;
 
 import org.junit.Test;
-import org.opencv.core.*;
-import org.opencv.features2d.FlannBasedMatcher;
-import top.geomatics.ips.utils.image.FeatureExtraction;
-import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.highgui.*;
+//import org.opencv.core.*;
+//import org.opencv.features2d.FlannBasedMatcher;
+//import org.opencv.highgui.*;
+//import org.opencv.imgcodecs.Imgcodecs;
+//import top.geomatics.ips.utils.image.FeatureExtraction;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-
-import static org.opencv.core.Scalar.all;
-import static org.opencv.features2d.Features2d.NOT_DRAW_SINGLE_POINTS;
-import static org.opencv.features2d.Features2d.drawMatches;
+//import static org.opencv.features2d.Features2d.drawMatches;
 
 public class FeatureMatchTest {
 
-    private String file_path1 = "E:\\Projects\\pictures\\T4.jpg";
+   /* private String file_path1 = "E:\\Projects\\pictures\\T4.jpg";
     private String file_path2 = "E:\\Projects\\pictures\\T4-2.jpg";
 
     @Test
@@ -54,6 +46,6 @@ public class FeatureMatchTest {
 
         System.out.println("matches.cols:"+matches.cols()+",matches.rows:"+matches.rows());
 
-    }
+    }*/
 
 }

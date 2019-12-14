@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class JSON2GeopackageTest {
-	private JSON2Geopackage j2p;
+/*	private JSON2Geopackage j2p;
 	private String filePath = "D:\\ips\\data\\database\\shilintong";
 
 	@Before
@@ -18,6 +18,6 @@ public class JSON2GeopackageTest {
 	@Test
 	public void testExecute() {
 		j2p.execute();
-	}
+	}*/
 
 }

@@ -1,11 +1,11 @@
-package top.geomatics.ips.algorithms.image;
+package top.geomatics.ips.utils.image;
 
 
 import org.junit.Test;
-import org.opencv.core.*;
-import top.geomatics.ips.utils.image.FeatureDataReader;
-import top.geomatics.ips.utils.image.FeatureExtraction;
-import top.geomatics.ips.utils.image.PositionSolver;
+//import org.opencv.core.*;
+//import top.geomatics.ips.utils.image.FeatureDataReader;
+//import top.geomatics.ips.utils.image.FeatureExtraction;
+//import top.geomatics.ips.utils.image.PositionSolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PositionSolverTest {
 
-    PositionSolver ps;
+   /* PositionSolver ps;
     FeatureExtraction fe;
     Point3 worldPoint;
 
@@ -64,5 +64,5 @@ public class PositionSolverTest {
         //worldPoint = ps.getWorldPoint( best_image_points.get(1), ps.rvec, ps.tvec, ps.cameraParameter);
 
 
-    }
+    }*/
 }

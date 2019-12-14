@@ -18,7 +18,7 @@ public class NearestNeighborAlgorithmTest {
 
 	NearestNeighborAlgorithm al = null;
 
-	@Before
+	/*@Before
 	public void setup() {
 		DataManager dataManager = new DataManager();
 		Context context = new Context(dataManager);
@@ -127,6 +127,6 @@ public class NearestNeighborAlgorithmTest {
 			biasY.add(by);
 		}
 
-	}
+	}*/
 
 }
