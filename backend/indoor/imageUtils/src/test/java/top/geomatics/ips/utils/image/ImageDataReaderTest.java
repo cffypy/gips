@@ -1,19 +1,18 @@
-package top.geomatics.ips.algorithms.image;
+package top.geomatics.ips.utils.image;
 
-import org.opencv.core.Core;
-import top.geomatics.ips.utils.image.ImageDataReader;
+import org.junit.Test;
+//import org.opencv.core.Core;
+//import org.opencv.core.Mat;
+//import org.opencv.core.Point3;
+//import top.geomatics.ips.utils.image.ImageDataReader;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.opencv.core.Mat;
-import org.opencv.core.Point3;
-import org.opencv.core.Core;
-
 public class ImageDataReaderTest {
 
-	private ImageDataReader ir = new ImageDataReader();
+	/*private ImageDataReader ir = new ImageDataReader();
 
 
 //	@Test
@@ -35,6 +34,6 @@ public class ImageDataReaderTest {
         ir.loadOBJ(rf,wf);
 //	    ir.loadDes(descriptors, point3s);
 
-    }
+    }*/
 
 }

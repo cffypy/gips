@@ -1,12 +1,10 @@
 package top.geomatics.ips.server.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sun.security.util.Password;
 import top.geomatics.ips.server.model.User;
 import top.geomatics.ips.server.service.UserServiceImpl;
 

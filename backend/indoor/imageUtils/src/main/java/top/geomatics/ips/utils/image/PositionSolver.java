@@ -1,15 +1,16 @@
-package top.geomatics.ips.utils.image;
+package src.main.java.top.geomatics.ips.utils.image;
 
-import org.opencv.calib3d.Calib3d;
-import org.opencv.core.*;
-import java.nio.ByteBuffer;
-
-import static org.opencv.calib3d.Calib3d.CV_P3P;
-import static org.opencv.calib3d.Calib3d.Rodrigues;
+//import org.opencv.calib3d.Calib3d;
+//import org.opencv.core.*;
+//
+//import java.nio.ByteBuffer;
+//
+//import static org.opencv.calib3d.Calib3d.CV_P3P;
+//import static org.opencv.calib3d.Calib3d.Rodrigues;
 
 public class PositionSolver {
 
-    public Mat rvec = new Mat(3,1,5);
+    /*public Mat rvec = new Mat(3,1,5);
     public Mat tvec = new Mat(3,1,5);
     public Mat cameraParameter;
     public MatOfDouble distCoeffs;
@@ -112,6 +113,6 @@ public class PositionSolver {
         Point3 worldPoint = new Point3(wcPoint.get(0,0)[0], wcPoint.get(0,1)[0], wcPoint.get(2, 0)[0]);
         return worldPoint;
 
-    }
+    }*/
 }
 

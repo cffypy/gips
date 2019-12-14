@@ -1,19 +1,18 @@
-package top.geomatics.ips.algorithms.image;
+package top.geomatics.ips.utils.image;
 
 import org.junit.Test;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfDMatch;
-import org.opencv.core.Point3;
-import top.geomatics.ips.utils.image.FeatureDataReader;
-import top.geomatics.ips.utils.image.FeatureExtraction;
+//import org.opencv.core.Core;
+//import org.opencv.core.Mat;
+//import org.opencv.core.MatOfDMatch;
+//import org.opencv.core.Point3;
+//import top.geomatics.ips.utils.image.FeatureDataReader;
+//import top.geomatics.ips.utils.image.FeatureExtraction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FeatureExtractionTest {
 
-    private FeatureExtraction fe = new FeatureExtraction();
+    /*private FeatureExtraction fe = new FeatureExtraction();
     private FeatureDataReader fr = new FeatureDataReader();
 
     @Test
@@ -30,6 +29,6 @@ public class FeatureExtractionTest {
         Mat MatOfKeyPoints = fe.extractFeature(file_path,image_descriptors);
         MatOfDMatch matches = fe.matchFeature(image_descriptors, descriptors_store);
 
-    }
+    }*/
 
 }

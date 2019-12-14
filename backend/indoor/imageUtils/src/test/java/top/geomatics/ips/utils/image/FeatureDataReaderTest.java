@@ -1,16 +1,16 @@
-package top.geomatics.ips.algorithms.image;
+package top.geomatics.ips.utils.image;
 
 import org.junit.Test;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.Point3;
-import top.geomatics.ips.utils.image.FeatureDataReader;
+//import org.opencv.core.Core;
+//import org.opencv.core.Mat;
+//import org.opencv.core.Point3;
+//import top.geomatics.ips.utils.image.FeatureDataReader;
 
 import java.util.List;
 
 public class FeatureDataReaderTest {
 
-    FeatureDataReader fr = new FeatureDataReader();
+   /* FeatureDataReader fr = new FeatureDataReader();
 
     @Test
     public void testFeatureReader(){
@@ -19,5 +19,5 @@ public class FeatureDataReaderTest {
         fr.readJson();
         Mat des_store = fr.readDes();
         List<Point3> point3List = fr.readPoint3();
-    }
+    }*/
 }

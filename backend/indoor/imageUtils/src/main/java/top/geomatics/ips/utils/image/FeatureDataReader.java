@@ -1,17 +1,10 @@
-package top.geomatics.ips.utils.image;
+package src.main.java.top.geomatics.ips.utils.image;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import org.opencv.core.Mat;
-import org.opencv.core.Point3;
-import top.geomatics.ips.utils.file.FileUtils;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FeatureDataReader {
-
-    List<FeaturePoint3> featurePoint3List = new ArrayList<>();
+    /*List<FeaturePoint3> featurePoint3List = new ArrayList<>();
 
     public void readJson() {
 
@@ -63,11 +56,11 @@ public class FeatureDataReader {
 
     public List<Point3> readPoint3(){
         int row = featurePoint3List.size();
-       List<Point3> pointsList = new ArrayList<Point3>();
+        List<Point3> pointsList = new ArrayList<Point3>();
         //构建待匹配的特征点描述子库descriptor_store，用于特征点匹配
         for (int m = 0 ; m < row  ; m++){
 
-                pointsList.add( featurePoint3List.get(m).point3);
+            pointsList.add( featurePoint3List.get(m).point3);
         }
 
         return pointsList;
@@ -78,7 +71,6 @@ public class FeatureDataReader {
         int f_id = 0;
         Point3 point3;
         float[] desc;
-    }
-
+    }*/
 
 }

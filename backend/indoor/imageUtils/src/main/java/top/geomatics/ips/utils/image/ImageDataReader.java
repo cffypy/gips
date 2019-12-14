@@ -1,16 +1,17 @@
 /**
  * 
  */
-package top.geomatics.ips.utils.image;
+package src.main.java.top.geomatics.ips.utils.image;
 
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+//import com.alibaba.fastjson.JSON;
+//import com.alibaba.fastjson.JSONArray;
+//import org.opencv.core.Core;
+//import org.opencv.core.KeyPoint;
+//import org.opencv.core.Mat;
+//import org.opencv.core.Point3;
+//import top.geomatics.ips.utils.file.FileUtils;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,25 +20,14 @@ import java.util.List;
 //import org.bytedeco.javacpp.opencv_core.Point2f;
 //import org.bytedeco.javacpp.opencv_core.Point3d;
 
-import com.alibaba.fastjson.JSONArray;
-import org.opencv.core.Mat;
-import org.opencv.core.KeyPoint;
-import org.opencv.core.Point;
-import org.opencv.core.Point3;
-import org.opencv.core.Core;
-
-import com.alibaba.fastjson.JSON;
-
-import top.geomatics.ips.utils.file.FileUtils;
-
 /**
  * @author whudyj
  *
  */
 public class ImageDataReader {
-	private List<Feature3D> objs = new ArrayList<Feature3D>();
+	//private List<Feature3D> objs = new ArrayList<Feature3D>();
 
-	public void loadOBJ(String filename, String wr) {
+	/*public void loadOBJ(String filename, String wr) {
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
@@ -315,5 +305,5 @@ public class ImageDataReader {
 		int IMG_ID;
 		int KEY_ID;
 		KeyPoint kpt;
-	}
+	}*/
 }
