@@ -9,7 +9,7 @@ import java.util.List;
  * 
  * A device which can be uniquely identified and sends out some signal that can
  * be captured and from which certain properties can be observed.
- * 
+ *
  * @author whudyj
  *
  */

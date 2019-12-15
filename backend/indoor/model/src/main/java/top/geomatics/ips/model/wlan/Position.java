@@ -8,7 +8,7 @@ package top.geomatics.ips.model.wlan;
  *  A simple 2-D position on a map where a Measurement can take place or that is
  * returned as a position estimate by a positioning algorithm. It is defined by
  * its X and Y coordinate on a map of an indoor location.
- * 
+ *
  * @author whudyj
  *
  */

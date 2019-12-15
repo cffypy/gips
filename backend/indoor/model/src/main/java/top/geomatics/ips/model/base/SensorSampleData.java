@@ -3,6 +3,8 @@
  */
 package top.geomatics.ips.model.base;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  * 
  *         <i>定位请求传感器数据</i>
  */
+@Data
 public class SensorSampleData {
 	// 设备识别码
 	private String deviceID;
@@ -23,45 +26,5 @@ public class SensorSampleData {
 
 	// 传感器数据序列
 	private List<SensorData> sensorData;
-
-	public String getDeviceID() {
-		return deviceID;
-	}
-
-	public void setDeviceID(String deviceID) {
-		this.deviceID = deviceID;
-	}
-
-	public Date getTimeStamp() {
-		return timeStamp;
-	}
-
-	public void setTimeStamp(Date timeStamp) {
-		this.timeStamp = timeStamp;
-	}
-
-	public Long getSampleDuration() {
-		return sampleDuration;
-	}
-
-	public void setSampleDuration(Long sampleDuration) {
-		this.sampleDuration = sampleDuration;
-	}
-
-	public Double getSampleFrequency() {
-		return sampleFrequency;
-	}
-
-	public void setSampleFrequency(Double sampleFrequency) {
-		this.sampleFrequency = sampleFrequency;
-	}
-
-	public List<SensorData> getSensorData() {
-		return sensorData;
-	}
-
-	public void setSensorData(List<SensorData> sensorData) {
-		this.sensorData = sensorData;
-	}
 
 }

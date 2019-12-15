@@ -10,7 +10,7 @@ import java.util.Map;
  * values. For each property there can be a number of captured values since this
  * allows us to for example take the average of the values or get other relevant
  * information (SignalMeasurementValues).
- * 
+ *
  * @author whudyj
  *
  */
@@ -23,7 +23,7 @@ public class SignalMeasurement {
 	}
 
 	public SignalMeasurement(SignalProperty signalProperty,
-			Map<SignalProperty, SignalMeasurementValues> signalMeasurement) {
+							 Map<SignalProperty, SignalMeasurementValues> signalMeasurement) {
 
 		super();
 		this.signalMeasurements = signalMeasurement;
