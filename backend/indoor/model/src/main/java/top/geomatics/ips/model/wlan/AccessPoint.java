@@ -15,7 +15,7 @@ import java.util.List;
  * communicating with the access point and the detected signal level in dBm.
  * This is generally the information that can be found when doing a WLAN scan on
  * a mobile device.
- * 
+ *
  * @author whudyj
  *
  */

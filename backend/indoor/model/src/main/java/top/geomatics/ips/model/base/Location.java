@@ -3,10 +3,13 @@
  */
 package top.geomatics.ips.model.base;
 
+import lombok.Data;
+
 /**
  * @author whudyj
- *
+ *总位置描述
  */
+@Data
 public class Location {
 	//无法计算出位置
 	Boolean noLocation;

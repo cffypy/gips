@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 
  * Contains the different Signal measurements of certain Base stations.
- * 
+ *
  * @author whudyj
  *
  */

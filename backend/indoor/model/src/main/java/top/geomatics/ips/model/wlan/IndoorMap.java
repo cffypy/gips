@@ -6,7 +6,7 @@ package top.geomatics.ips.model.wlan;
 /**
  * 
  * An indoor map with an ID to identify it.
- * 
+ *
  * @author whudyj
  *
  */
