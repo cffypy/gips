@@ -2,14 +2,29 @@ package top.geomatics.ips.service;
 
 /**
  * Created by whudyj on 2017/11/2.
+ * 位置客户端，触发定位事件，当位置改变时，获取当前位置
  */
 
 public class GLocationClient  {
+	private IGLocationListener listener;
+
+	/**
+	 * 设置位置监听器
+	 */
+	public void setLocationListener(IGLocationListener listener) {
+		this.listener = listener;
+	}
+
 	/**
 	 * 获取最后位置
 	 */
 	public GLocation getLastKnownLocation() {
-		return new GLocation();
+		GLocation location = new GLocation();
+		if (listener != null)
+		{
+			listener.onLocationChanged(location);
+		}
+		return location;
 	}
 
 	/**
@@ -40,11 +55,7 @@ public class GLocationClient  {
 
 	}
 
-	/**
-	 * 设置定位回调监听
-	 */
-	public void setLocationListener(IGLocationListener listener) {
-	}
+
 
 	/**
 	 * 设置定位参数
