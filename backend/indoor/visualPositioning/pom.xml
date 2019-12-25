@@ -17,6 +17,15 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>top.geomatics.ips</groupId>
+            <artifactId>ips-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>top.geomatics.ips</groupId>
+            <artifactId>ips-utils</artifactId>
+        </dependency>
+
     </dependencies>
 
 

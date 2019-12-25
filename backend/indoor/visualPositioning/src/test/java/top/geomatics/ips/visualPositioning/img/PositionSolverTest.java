@@ -60,12 +60,9 @@ public class PositionSolverTest {
         image_points.fromList(best_image_points);
 
         //解算位姿
-        ps.slove(object_points, image_points);
+        worldPoint = ps.slove(object_points, image_points);
 
-        System.out.println("旋转矩阵："+ps.rvec);
-        System.out.println("平移矩阵："+ps.tvec);
-
-        //worldPoint = ps.getWorldPoint( best_image_points.get(1), ps.rvec, ps.tvec, ps.cameraParameter);
+        System.out.println("相机坐标:"+ worldPoint);
 
 
     }

@@ -4,8 +4,6 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfDMatch;
 import org.opencv.features2d.FlannBasedMatcher;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class FeatureMatcher {
 
