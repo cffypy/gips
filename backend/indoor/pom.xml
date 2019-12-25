@@ -38,6 +38,7 @@
 		<module>server</module>
 		<module>engine</module>
 		<module>imageUtils</module>
+		<module>visualPositioning</module>
 	</modules>
 
 	<!-- 自定义变量 -->
