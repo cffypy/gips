@@ -70,8 +70,10 @@
           let zoom = map.getZoom();
           if(zoom>=17){
             $this.showFloors = true;
+            map.setPitch(45)
           }else{
             $this.showFloors = false;
+            map.setPitch(0)
           }
         }
       },
@@ -191,6 +193,7 @@
   .floorToggle .item{
     border-bottom:1px solid rgba(0, 0, 0, 0.2);
     padding: 0.7rem;
+    cursor: pointer;
   }
   .floorToggle .item:last-child{
     border-bottom: none;

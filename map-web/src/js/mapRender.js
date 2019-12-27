@@ -129,7 +129,7 @@ function RenderMap (divId, option) {
               "==","floor",1.0
             ]*/
           },
-          {
+         /* {
             "id": "fill-indoor",
             "type": "fill",
             "source": "indoor-data-vector",
@@ -141,19 +141,41 @@ function RenderMap (divId, option) {
             },
             "paint": {
               "fill-color": "#FFD764"
-                /*[
+                /!*[
                 "match",
                 ["get","type"],
                 "classroom","#4A8AF4",
                 "other","#19975C",
                 "#FFD764"
-              ]*/,
+              ]*!/,
               "fill-opacity": 0.4
             },
             filter:[
               "==","floor",1
             ]
-          },
+          },*/
+
+          {
+            "id":"fill-indoor",
+            "type": "fill-extrusion",
+            "source": "indoor-data-vector",
+            "source-layer": "unit",
+            "minzoom": 17,
+            "maxzoom": 22,
+            "layout": {
+              // "visibility":"none"
+            },
+            "paint": {
+              // 'fill-extrusion-color': ['get', 'color'],
+              'fill-extrusion-color': "#FFD764",
+              'fill-extrusion-opacity': 0.7,
+              'fill-extrusion-height': 5,
+              'fill-extrusion-base': 0,
+            },
+            filter:[
+              "==","floor",1
+            ]
+          }
         ]
       },
       zoom: zoom,
@@ -166,6 +188,7 @@ function RenderMap (divId, option) {
         30.520938231971368], [114.37754631042479, 30.559600267673375
       ]],//*/
       fadeDuration: 0,//icon 的隐现效果
+      "pitch": 45
     });
 
     map.setMinZoom(zoomRange[0]);
