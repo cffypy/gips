@@ -10,5 +10,4 @@ import lombok.Data;
 public class Test {
     public int id;
     public String name;
-    
 }

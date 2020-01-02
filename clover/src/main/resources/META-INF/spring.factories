@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.deepinsight.club.common.CommonAutoConfig,\
+  com.deepinsight.club.common.autoconfig.MybatisPlusAutoConfig,\
+  com.deepinsight.club.common.autoconfig.ElasticJobAutoConfig,\
+  com.deepinsight.club.common.autoconfig.SwaggerAutoConfig
