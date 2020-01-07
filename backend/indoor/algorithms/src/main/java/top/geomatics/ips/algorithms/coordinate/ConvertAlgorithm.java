@@ -72,13 +72,14 @@ public class ConvertAlgorithm {
         double a0=m0+1/2*m2+3/8*m4+5/16*m6+35/128*m8;
         double a2=1/2*m2+1/2*m4+15/32*m6+7/16*m8;
         double a4=1/8*m4+3/16*m6+7/32*m8;
-        double a6=1/8*m4+3/16*m6+7/32*m8;
+        double a6=1/32*m6+1/16*m8;
         double a8=1/128*m8;
+
 
         double t=Math.tan(Convert.JTH(bbb));
         double u=e2*Math.cos(Convert.JTH(bbb));
 
-        double X= a0*Math.sin(Convert.JTH(bbb))-a2*Math.sin(Convert.JTH(bbb))/2-a4*Math.sin(4*Convert.JTH(bbb))/4-
+        double X= a0*Convert.JTH(bbb)-a2*Math.sin(Convert.JTH(bbb))/2-a4*Math.sin(4*Convert.JTH(bbb))/4-
                 a6*Math.sin(6*Convert.JTH(bbb))/6-a8*Math.sin(8*Convert.JTH(bbb))/8;
         System.out.println("哈哈X "+X);
         //根据所选择的分带方式，计算带号n和中央子午线经度L0
@@ -107,7 +108,7 @@ public class ConvertAlgorithm {
         System.out.println("yy "+y);
 
         double[] result=new double[2];
-        result[0]=x;
+        result[0]=X;
         result[1]=y+500000+1000000*n;
         return result;
     }
@@ -122,10 +123,11 @@ public class ConvertAlgorithm {
         return d;
     }
 
-    //正算
+    //高斯正算
     public static double[] BLtoXY(double longitude,double latitude) {
+        //带号
         int ProjNo = 0;
-        // 带宽
+        //带宽
         int ZoneWide = 6;
         double longitude1, latitude1, longitude0, X0, Y0, xval, yval;
         double a, f, e2, ee, NN, T, C, A, M, iPI;
@@ -133,15 +135,11 @@ public class ConvertAlgorithm {
         iPI = 0.0174532925199433;
         // 54年北京坐标系参数
         a = 6378245.0;
-        f = 1.0 / 298.3;
-
-        // 80年西安坐标系参数
-        // a=6378140.0;
-        // f=1/298.257;
+        f = 1.0/298.3;
         ProjNo = (int) (longitude / ZoneWide);
+        //中央经线
         longitude0 = ProjNo * ZoneWide + ZoneWide / 2;
         longitude0 = longitude0 * iPI;
-
         // 经度转换为弧度
         longitude1 = longitude * iPI;
         // 纬度转换为弧度
@@ -149,6 +147,7 @@ public class ConvertAlgorithm {
 
         e2 = 2 * f - f * f;
         ee = e2 * (1.0 - e2);
+        //某有权曲率半径
         NN = a / Math.sqrt(1.0 - e2 * Math.sin(latitude1) * Math.sin(latitude1));
         T = Math.tan(latitude1) * Math.tan(latitude1);
         C = ee * Math.cos(latitude1) * Math.cos(latitude1);
@@ -156,6 +155,7 @@ public class ConvertAlgorithm {
         M = a * ((1 - e2 / 4 - 3 * e2 * e2 / 64 - 5 * e2 * e2 * e2 / 256) * latitude1 - (3 * e2 / 8 + 3 * e2 * e2 / 32 + 45 * e2 * e2 * e2 / 1024) * Math.sin(2 * latitude1) + (15 * e2 * e2 / 256 + 45 * e2 * e2 * e2 / 1024) * Math.sin(4 * latitude1) - (35 * e2 * e2 * e2 / 3072) * Math.sin(6 * latitude1));
         xval = NN * (A + (1 - T + C) * A * A * A / 6 + (5 - 18 * T + T * T + 72 * C - 58 * ee) * A * A * A * A * A / 120);
         yval = M + NN * Math.tan(latitude1) * (A * A / 2 + (5 - T + 9 * C + 4 * C * C) * A * A * A * A / 24 + (61 - 58 * T + T * T + 600 * C - 330 * ee) * A * A * A * A * A * A / 720);
+
         X0 = 1000000 * (ProjNo + 1) + 500000;
         Y0 = 0;
         xval = xval + X0;
@@ -163,7 +163,7 @@ public class ConvertAlgorithm {
         return new double[] { xval, yval };
     }
 
-    //反算
+    //高斯反算
     public static double[] XYtoBL(double X,double Y) {
         int ProjNo;
         int ZoneWide; // //带宽
@@ -200,7 +200,7 @@ public class ConvertAlgorithm {
         longitude1 = longitude0 + (D - (1 + 2 * T + C) * D * D * D / 6 + (5 - 2 * C + 28 * T - 3 * C * C + 8 * ee + 24 * T * T) * D * D * D * D * D / 120) / Math.cos(fai);
         latitude1 = fai - (NN * Math.tan(fai) / R) * (D * D / 2 - (5 + 3 * T + 10 * C - 4 * C * C - 9 * ee) * D * D * D * D / 24 + (61 + 90 * T + 298 * C + 45 * T * T - 256 * ee - 3 * C * C) * D * D * D * D * D * D / 720);
         // 转换为度 DD
-        output[0] = longitude1 / iPI;
+        output[0] = longitude1/ iPI;
         output[1] = latitude1 / iPI;
         return output;
     }

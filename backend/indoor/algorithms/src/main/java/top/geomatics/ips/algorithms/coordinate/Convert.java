@@ -77,8 +77,58 @@ public class Convert {
         return cc;
     }
 
+    //根据坐标系统获取椭球体参数
+    public static double[] getdata(int system){
+        double a=0;
+        double b=0;
+        double f=0;
+        switch(system){
+            case 1:
+                System.out.println("北京54坐标系参数");
+                a = 6378245.0;
+                b=6356863.0188;
+                f = 1.0/298.3;
+                break;
+            case 2:
+                System.out.println("西安80坐标系参数");
+                a=6378140.0;
+                b=6356755.2882;
+                f=1/298.257;
+                break;
+            case 3:
+                System.out.println("WGS84坐标系参数");
+                a=6378137.0;
+                b=6356752.3142;
+                f=1/298.257223563;
+                break;
+            case 4:
+                System.out.println("克拉索夫斯基椭球参数");
+                a=6378245.0;
+                b=6356863.0;
+                f=1/298.3;
+        }
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(f);
+        return new double[]{a,b,f};
+    }
 
-
-
-
+    public static int test(int x){
+        int s=0;
+        if( x == 10 ){
+            System.out.print("Value of X is 10");
+            s=x;
+        }else if( x == 20 ){
+            System.out.print("Value of X is 20");
+            s=x;
+        }else if( x == 30 ){
+            System.out.print("Value of X is 30");
+            s=x;
+        }else{
+            System.out.print("这是 else 语句");
+            s=100;
+        }
+        System.out.println(s);
+        return s;
+    }
 }
