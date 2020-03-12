@@ -40,6 +40,8 @@ public class PositionSolver {
             buf.put(b,0, b.length);
         }
         Mat cameraParameter = new Mat(3,3,5, buf);
+        System.out.println("相机内参："+cameraParameter.get(0,0));
+
 
         return cameraParameter;
     }

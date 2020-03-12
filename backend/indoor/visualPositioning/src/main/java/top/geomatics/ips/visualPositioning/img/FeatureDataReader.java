@@ -29,7 +29,7 @@ public class FeatureDataReader {
             JSONObject feature_i = jsonArray.getJSONObject(i);
 
             JSONArray arr = feature_i.getJSONArray("descriptors");
-            fp3.desc = new float[arr.size()];
+            fp3.desc = new double[arr.size()];
             for(int j = 0 ; j < arr.size() ; j++){
                 fp3.desc[j] = arr.getFloat(j);
             }
@@ -78,9 +78,21 @@ public class FeatureDataReader {
     }
 
     public class FeaturePoint3{
+        public int getF_id() {
+            return f_id;
+        }
+
+        public Point3 getPoint3() {
+            return point3;
+        }
+
+        public double[] getDesc() {
+            return desc;
+        }
+
         int f_id = 0;
         Point3 point3;
-        float[] desc;
+        double[] desc;
     }
 
 

@@ -202,6 +202,11 @@
 				<artifactId>ips-algorithms</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>top.geomatics.ips</groupId>
+				<artifactId>ips-visualPositioning</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
 			<!-- JUnit -->
 			<dependency>

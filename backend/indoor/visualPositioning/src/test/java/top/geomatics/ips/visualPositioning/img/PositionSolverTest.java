@@ -10,10 +10,15 @@ import java.util.List;
 
 public class PositionSolverTest {
 
-    PositionSolver ps;
-    FeatureExtraction fe;
-    FeatureMatcher fm;
-    Point3 worldPoint;
+
+    static {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //
+    }
+
+    PositionSolver ps = new PositionSolver();
+    FeatureExtraction fe = new FeatureExtraction();
+    FeatureMatcher fm = new FeatureMatcher();
+    Point3 worldPoint =new Point3();
 
     private FeatureDataReader fr = new FeatureDataReader();
 
@@ -22,22 +27,22 @@ public class PositionSolverTest {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         //提取特征点
-        String file_path = "E:\\Projects\\214房间照片\\T2.jpg";
+        String file_path = "E:\\Projects\\pictures\\T2.jpg";
         Mat descriptors_query = new Mat();
         //提取拍摄图像的特征点
         MatOfKeyPoint image_keyPoints = fe.extractFeature(file_path, descriptors_query);
 
         //读取空间点的json文件（坐标+描述子）
-        fr.readJson();
+      //  fr.readJson();
         //读取所有特征描述子，用于特征匹配
-        Mat descriptors_store = fr.readDes();
+     //   Mat descriptors_store = fr.readDes();
         //读取所有三维点，用于计算位姿
         List<Point3> point3List= fr.readPoint3();
 
         //找出匹配点对matches
         MatOfDMatch good_matches =new MatOfDMatch();
-        fm.matchFeature(descriptors_query, descriptors_store, good_matches);
-        fm.sortMatches(good_matches);
+        fm.matchFeature( descriptors_query,good_matches);
+     //   fm.sortMatches(good_matches);
 
         MatOfPoint2f image_points = new MatOfPoint2f();
         MatOfPoint3f object_points = new MatOfPoint3f();
@@ -51,6 +56,7 @@ public class PositionSolverTest {
             int objectKPID = good_matches.toArray()[i].trainIdx;
             Point point2f = image_keyPoints.toArray()[imageKPID].pt;
             Point3 point3f = point3List.get(objectKPID);
+
             best_image_points.add(point2f);
             best_object_points.add(point3f);
 

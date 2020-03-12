@@ -5,7 +5,9 @@ import org.opencv.core.MatOfKeyPoint;
 import org.opencv.core.MatOfDMatch;
 import org.opencv.features2d.FlannBasedMatcher;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.xfeatures2d.SURF;
+import org.opencv.core.Size;
 
 import java.io.File;
 
@@ -21,18 +23,20 @@ public class FeatureExtraction {
 
 
         SURF surf = SURF.create();
-        surf.setHessianThreshold(2000);
+        surf.setHessianThreshold(10000);
 
         MatOfKeyPoint keyPoints = new MatOfKeyPoint();
 
         //读取图像
         Mat img1 = Imgcodecs.imread(img_file);
+        Mat img2 = new Mat();
+        Imgproc.resize(img1, img2, new Size(img1.rows()/4, img1.cols()/4) );
         System.out.println("图像的大小："+img1.size());
 
         //提取特征
-        surf.detect(img1, keyPoints);
+        surf.detect(img2, keyPoints);
         //计算描述子
-        surf.compute(img1, keyPoints, descriptors);
+        surf.compute(img2, keyPoints, descriptors);
 
 
         System.out.println("descriptors.cols=" + descriptors.cols());

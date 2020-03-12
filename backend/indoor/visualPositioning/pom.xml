@@ -22,9 +22,12 @@
             <artifactId>ips-utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>top.geomatics.ips</groupId>
-            <artifactId>ips-utils</artifactId>
+            <groupId>com.github.jelmerk</groupId>
+            <artifactId>hnswlib-parent-pom</artifactId>
+            <version>0.0.27</version>
+            <type>pom</type>
         </dependency>
+
 
     </dependencies>
 

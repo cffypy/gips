@@ -2,7 +2,9 @@ package top.geomatics.ips.visualPositioning.img;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfDMatch;
+import org.opencv.core.MatOfKeyPoint;
 import org.opencv.features2d.FlannBasedMatcher;
+import top.geomatics.ips.model.vision.ImageData;
 
 
 public class FeatureMatcher {
@@ -11,7 +13,8 @@ public class FeatureMatcher {
     QuickSort qs;
     //匹配特征点对：descriptors 和 descriptors_store
     //返回：good_matches
-    public void matchFeature(Mat descriptors, Mat descriptors_store, MatOfDMatch good_matches) {
+    public void matchFeature(Mat descriptors_query, MatOfDMatch good_matches) {
+
 
         FlannBasedMatcher matcher = FlannBasedMatcher.create();
         MatOfDMatch matches = new MatOfDMatch();
@@ -20,20 +23,29 @@ public class FeatureMatcher {
 
         //  ImageDataReader ir = new ImageDataReader();
         FeatureDataReader fr = new FeatureDataReader();
+        FeatureExtraction fe = new FeatureExtraction();
 
-        //  ir.loadOBJ(rf, wf);
+
+
+
+        //读取特征点库
+        fr.readJson();;
+
+        //fr.readPoint3();
+        //  fr.loadOBJ(rf, wf);
         //     ir.loadDes(descriptors_store,points3);
 
 
         //将descriptors_store输出到文件
 
         //特征匹配 matches
-        matcher.match(descriptors, descriptors_store, matches);
+        Mat descriptors_store = fr.readDes();
+        matcher.match(descriptors_query, descriptors_store, matches);
 
         //最大距离和最小距离
         double max_dist = 0;
         double min_dist = 100;
-        for (int i = 0; i < descriptors.rows(); i++) {
+        for (int i = 0; i < matches.toArray().length; i++) {
             double dist = matches.toArray()[i].distance;
             if (dist < min_dist) min_dist = dist;
             if (dist > max_dist) max_dist = dist;
@@ -43,29 +55,42 @@ public class FeatureMatcher {
 
         //最佳匹配 good_matches
 
-        for (int m = 0; m< descriptors.rows(); m++) {
-            if (matches.toArray()[m].distance <= Math.max(2 * min_dist, 0.02)) {
+        for (int m = 0; m< matches.rows(); m++) {
+            if (matches.toArray()[m].distance <= Math.max(5 * min_dist, 0.2)) {
                 good_matches.push_back(matches.row(m));
 
             }
+
         }
 
+        System.out.println("匹配点对数"+good_matches.toArray().length);
+
     }
+
+
+
+
+
+
 
 
     //对匹配结果进行排序
     public MatOfDMatch sortMatches(MatOfDMatch good_matches){
 
-
         //对匹配点对按照距离排序
-        int n = good_matches.cols();
+        if (good_matches!=null) {
 
+            qs.quickSort(good_matches);
 
-        qs.quickSort(good_matches);
+            System.out.println("筛选出的匹配点good_matches对数为" + good_matches.rows());
 
-        System.out.println("筛选出的匹配点good_matches对数为"+good_matches.rows());
+            return good_matches;
+        }
 
-        return good_matches;
+        else  {
+            System.out.println("good_matches为空");
+            return null;
+        }
     }
 
 
@@ -100,7 +125,7 @@ public class FeatureMatcher {
                 while(good_matches.toArray()[j].distance<x && i<j){
                     i++;
                 }
-                //4.将左侧找到的打印等于基准值的值加入到右边的坑中，右指针向中间移动一个位置 j--
+                //4.将左侧找到的大于等于基准值的值加入到右边的坑中，右指针向中间移动一个位置 j--
                 if(i<j){
                     good_matches.toArray()[j] = good_matches.toArray()[i];
                     j--;
