@@ -7,13 +7,17 @@ import org.opencv.features2d.FlannBasedMatcher;
 import top.geomatics.ips.model.vision.ImageData;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class FeatureMatcher {
 
 
     QuickSort qs;
     //匹配特征点对：descriptors 和 descriptors_store
     //返回：good_matches
-    public void matchFeature(Mat descriptors_query, MatOfDMatch good_matches) {
+    public void matchFeature(Mat descriptors_query, Mat des_train, MatOfDMatch good_matches) {
 
 
         FlannBasedMatcher matcher = FlannBasedMatcher.create();
@@ -22,25 +26,11 @@ public class FeatureMatcher {
         //读取特征库 descriptors_store
 
         //  ImageDataReader ir = new ImageDataReader();
-        FeatureDataReader fr = new FeatureDataReader();
-        FeatureExtraction fe = new FeatureExtraction();
+   //     FeatureDataReader fr = new FeatureDataReader();
 
 
+        matcher.match(descriptors_query, des_train, matches);
 
-
-        //读取特征点库
-        fr.readJson();;
-
-        //fr.readPoint3();
-        //  fr.loadOBJ(rf, wf);
-        //     ir.loadDes(descriptors_store,points3);
-
-
-        //将descriptors_store输出到文件
-
-        //特征匹配 matches
-        Mat descriptors_store = fr.readDes();
-        matcher.match(descriptors_query, descriptors_store, matches);
 
         //最大距离和最小距离
         double max_dist = 0;
@@ -56,7 +46,7 @@ public class FeatureMatcher {
         //最佳匹配 good_matches
 
         for (int m = 0; m< matches.rows(); m++) {
-            if (matches.toArray()[m].distance <= Math.max(5 * min_dist, 0.2)) {
+            if (matches.toArray()[m].distance <= Math.max(2* min_dist, 0.2)) {
                 good_matches.push_back(matches.row(m));
 
             }

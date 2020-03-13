@@ -6,6 +6,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.Point3;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class ImageDataReaderTest {
 //		ir.loadOBJ(rf,wf);
 //	}
 	@Test
-    public  void testLoadDes(){
+    public  void testLoadDes() throws IOException {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         Mat descriptors = new Mat(1,64,5);

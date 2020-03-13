@@ -4,6 +4,7 @@ package top.geomatics.ips.visualPositioning.img;
 import org.junit.Test;
 import org.opencv.core.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class PositionSolverTest {
     private FeatureDataReader fr = new FeatureDataReader();
 
     @Test
-    public void testPositionSolver(){
+    public void testPositionSolver() throws IOException {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         //提取特征点
@@ -35,13 +36,16 @@ public class PositionSolverTest {
         //读取空间点的json文件（坐标+描述子）
       //  fr.readJson();
         //读取所有特征描述子，用于特征匹配
-     //   Mat descriptors_store = fr.readDes();
+        long start=System.currentTimeMillis();   //获取开始时间
+        Mat descriptors_store = fr.readDesMat();
+        long end=System.currentTimeMillis(); //获取结束时间
+        System.out.println("程序运行时间： "+(end-start)/1000+"s");
         //读取所有三维点，用于计算位姿
         List<Point3> point3List= fr.readPoint3();
 
         //找出匹配点对matches
         MatOfDMatch good_matches =new MatOfDMatch();
-        fm.matchFeature( descriptors_query,good_matches);
+        fm.matchFeature( descriptors_query, descriptors_store,good_matches);
      //   fm.sortMatches(good_matches);
 
         MatOfPoint2f image_points = new MatOfPoint2f();
@@ -67,6 +71,7 @@ public class PositionSolverTest {
 
         //解算位姿
         worldPoint = ps.slove(object_points, image_points);
+
 
         System.out.println("相机坐标:"+ worldPoint);
 

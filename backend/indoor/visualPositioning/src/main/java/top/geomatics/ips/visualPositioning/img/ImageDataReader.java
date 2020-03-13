@@ -15,10 +15,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.bytedeco.javacpp.opencv_core.KeyPoint;
-//import org.bytedeco.javacpp.opencv_core.Mat;
-//import org.bytedeco.javacpp.opencv_core.Point2f;
-//import org.bytedeco.javacpp.opencv_core.Point3d;
+import org.msgpack.core.*;
 
 /**
  * @author whudyj
@@ -27,7 +24,7 @@ import java.util.List;
 public class ImageDataReader {
 	private List<Feature3D> objs = new ArrayList<Feature3D>();
 
-	public void loadOBJ(String filename, String wr) {
+	public void loadOBJ(String filename, String wr) throws IOException {
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
@@ -69,9 +66,9 @@ public class ImageDataReader {
 					IMG_KEY key = new IMG_KEY();
 
 					key.IMG_ID = Integer.reverseBytes(is.readInt());
-					writeLine(writer, "IMG_ID: " + key.IMG_ID);
+				//	writeLine(writer, "IMG_ID: " + key.IMG_ID);
 					key.KEY_ID = Integer.reverseBytes(is.readInt());
-					writeLine(writer, "KEY_ID: " + key.KEY_ID);
+				//	writeLine(writer, "KEY_ID: " + key.KEY_ID);
 					float px = Float.intBitsToFloat(Integer.reverseBytes(is.readInt()));
 					float py = Float.intBitsToFloat(Integer.reverseBytes(is.readInt()));
 					float sz = Float.intBitsToFloat(Integer.reverseBytes(is.readInt()));
@@ -100,8 +97,8 @@ public class ImageDataReader {
 			//	writeLine(writer, sc);
 
 				//
-				t.des = new Mat(rows, cols , type_);
-				long total_ = rows * t.des.step1(0);
+			//	t.des = new Mat(rows, cols , type_);
+			//	long total_ = rows * t.des.step1(0);
 				//byte b[] = new byte[total_];
 				//int sss = is.read(b);
 
@@ -126,10 +123,10 @@ public class ImageDataReader {
 
 			//	writeLine(writer, sc);
 
-				t.colors = new int[3];
-				t.colors[0] = cx;
-				t.colors[1] = cy;
-				t.colors[2] = cz;
+			//	t.colors = new int[3];
+			//	t.colors[0] = cx;
+			//	t.colors[1] = cy;
+			//	t.colors[2] = cz;
 
 			//	objs.add(t);
                 objs.add(f);
@@ -155,7 +152,25 @@ public class ImageDataReader {
 		String objsString = JSON.toJSONString(objs);
         JSONArray objsList = JSONArray.parseArray(objsString);
         String objsListString = objsList.toString();
-        FileUtils.WriteFile("E:\\Projects\\诗琳通视觉定位数据\\extractorType-OBJLllist.json",objsListString);
+
+
+        //把特征描述子和三维点分为输出为二进制文件
+		DataOutputStream dataOutput = new DataOutputStream(new FileOutputStream("E:\\Projects\\descriptors.dat"));
+		for( Feature3D f : objs){
+			for (float ff :f.descriptors){
+				dataOutput.writeFloat(ff);
+			}
+		}
+
+		DataOutputStream dataOutput2 = new DataOutputStream(new FileOutputStream("E:\\Projects\\coordinates.dat"));
+		for( Feature3D f : objs){
+			dataOutput2.writeDouble(f.pt3.x);
+			dataOutput2.writeDouble(f.pt3.y);
+			dataOutput2.writeDouble(f.pt3.z);
+			}
+
+
+       // FileUtils.WriteFile("E:\\Projects\\诗琳通视觉定位数据\\extractorType-OBJLllist0312.json",objsListString);
 
 
 
