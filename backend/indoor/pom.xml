@@ -79,7 +79,7 @@
 		<!-- commons text版本 -->
 		<commons_text.version>1.6</commons_text.version>
 		<!-- commons compress版本 -->
-		<commons_compress.version>1.18</commons_compress.version>
+		<commons_compress.version>1.21</commons_compress.version>
 		<!-- deeplearning4j版本 -->
 		<deeplearning4j.version>0.9.1</deeplearning4j.version>
 		<!-- servlet-api版本 -->
