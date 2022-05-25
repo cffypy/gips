@@ -63,7 +63,7 @@
 		<!-- dom4j版本 -->
 		<dom4j.version>2.1.1</dom4j.version>
 		<!-- Spring版本 -->
-		<springframework.version>5.1.8.RELEASE</springframework.version>
+		<springframework.version>5.2.22.RELEASE</springframework.version>
 		<!-- Springfox版本 -->
 		<springfox.version>2.9.2</springfox.version>
 		<!-- sqlite版本 -->
