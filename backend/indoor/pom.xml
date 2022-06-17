@@ -59,7 +59,7 @@
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
 		<configuration2.version>2.5</configuration2.version>
 		<!-- json版本 -->
-		<fastjson.version>1.2.60</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<!-- dom4j版本 -->
 		<dom4j.version>2.1.1</dom4j.version>
 		<!-- Spring版本 -->
